@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MoviesInfoApp</string>
+    <string name="list_of_movies">List of movies</string>
+    <string name="change_filters_button">Change filters</string>
+    <string name="deadpool_plot">Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boy\'s life.</string>
+    <string name="deadpool_actors">Josh Brolin, Ryan Reynolds, Morena Baccarin, Zazie Beetz</string>
+    <string name="deadpool_2">Deadpool 2</string>
+    <string name="deadpool_avg_rating">IMDB Vote Average: 7.9</string>
+    <string name="change_filters">Change filters:</string>
+    <string name="save_filters">Save filters</string>
 </resources>
