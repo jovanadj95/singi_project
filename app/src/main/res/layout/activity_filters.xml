@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
+        <!--TODO on click listener for save filters button-->
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

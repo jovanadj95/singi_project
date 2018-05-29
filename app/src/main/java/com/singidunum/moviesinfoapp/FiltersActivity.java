@@ -5,6 +5,10 @@ import android.os.Bundle;
 
 public class FiltersActivity extends AppCompatActivity {
 
+    // TODO create the list of checkboxes with filters
+    // TODO remember last selected
+    // TODO on save filters' button click go back to main activity
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

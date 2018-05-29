@@ -19,6 +19,7 @@
             android:text="@string/list_of_movies"
             android:textSize="18sp" />
 
+        <!--TODO on click listener for change filters button-->
         <Button
             android:id="@+id/changeFilters"
             android:layout_width="wrap_content"
