@@ -6,6 +6,7 @@
         <item name="android:colorForeground">@android:color/darker_gray</item>
         <item name="android:textColor">@android:color/darker_gray</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@android:color/darker_gray</item>
     </style>
 
 </resources>
