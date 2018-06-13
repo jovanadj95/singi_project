@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -57,28 +58,33 @@ public class FiltersActivity extends AppCompatActivity {
     }
 
     private void saveFilters(String filter, ArrayList<String> chosen) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
         Gson gson = new Gson();
-        String genres = "";
-        String languages = "";
-        String productions = "";
+        String genres, languages, productions;
         switch (filter) {
             case "genres":
                 genres = gson.toJson(chosen);
+                if (!checkIfEmpty(genres)) {
+                    editor.putString("genres", genres).apply();
+                }
                 break;
             case "languages":
                 languages = gson.toJson(chosen);
+                if (!checkIfEmpty(languages)) {
+                    editor.putString("languages", languages).apply();
+                }
                 break;
             default:
                 productions = gson.toJson(chosen);
+                if (!checkIfEmpty(productions)) {
+                    editor.putString("productions", productions).apply();
+                }
                 break;
         }
+    }
 
-        editor.putString("genres", genres);
-        editor.putString("languages", languages);
-        editor.putString("productions", productions);
-        editor.apply();
+    private Boolean checkIfEmpty(String json) {
+        return TextUtils.isEmpty(json);
     }
 
     private void createCheckboxes(LinearLayout layout, final ArrayList<String> selectedItems, HashMap<String, String> maps) {
