@@ -24,110 +24,11 @@
             android:layout_marginTop="15dp"
             android:background="#0004ff" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:text="@string/genre" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="15dp"
-            android:background="#0004ff" />
-
         <LinearLayout
-            android:id="@+id/genres_layout"
+            android:id="@+id/filter_groups"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:text="@string/date_from" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="15dp"
-            android:background="#0004ff" />
-
-        <DatePicker
-            android:id="@+id/date_from"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner"
-            android:paddingTop="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:text="@string/date_to" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="15dp"
-            android:background="#0004ff" />
-
-        <DatePicker
-            android:id="@+id/date_to"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner"
-            android:paddingTop="15dp" />
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:text="@string/language" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="15dp"
-            android:background="#0004ff" />
-
-        <LinearLayout
-            android:id="@+id/language_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:text="@string/production_house" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="15dp"
-            android:background="#0004ff" />
-
-        <LinearLayout
-            android:id="@+id/production_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="15dp" />
+            android:orientation="vertical" />
 
         <Button
             android:id="@+id/save_filters"
