@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
     tools:context=".FiltersActivity">
 
@@ -24,10 +24,10 @@
             android:layout_marginTop="15dp"
             android:background="#0004ff" />
 
-        <LinearLayout
-            android:id="@+id/filter_groups"
+        <com.singidunum.moviesinfoapp.FilterWidget
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:entries="@array/filter_groups_names"
             android:orientation="vertical" />
 
         <Button
