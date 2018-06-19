@@ -1,7 +1,9 @@
-package com.singidunum.moviesinfoapp;
+package com.singidunum.moviesinfoapp.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.singidunum.moviesinfoapp.R;
 
 public class FiltersActivity extends AppCompatActivity {
 

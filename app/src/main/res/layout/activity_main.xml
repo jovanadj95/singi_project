@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,7 +38,7 @@
         android:background="#0004ff" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/previous_list"
+        android:id="@+id/movies_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp" />

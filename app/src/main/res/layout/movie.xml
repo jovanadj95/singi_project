@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/movie"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:onClick="goToMovieDetails"
@@ -8,7 +9,7 @@
     <!--TODO add on Click listener in the class-->
 
     <ImageView
-        android:id="@+id/movieImage"
+        android:id="@+id/poster"
         android:layout_width="100dp"
         android:layout_height="150dp"
         android:src="@drawable/deadpool2" />
@@ -25,18 +26,47 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/movieTitle"
+                android:id="@+id/movie_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/deadpool_2"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/synopsis"
-                android:layout_width="wrap_content"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/deadpool_plot" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/rating_text" />
+
+                <TextView
+                    android:id="@+id/rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/rating_number" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@android:drawable/star_off" />
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -45,12 +75,11 @@
                 android:background="@android:color/darker_gray" />
 
             <TextView
+                android:id="@+id/overview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/deadpool_actors" />
+                android:text="@string/deadpool_plot" />
         </LinearLayout>
     </ScrollView>
-
-
 </LinearLayout>

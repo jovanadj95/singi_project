@@ -14,4 +14,6 @@
     <string name="language">Language</string>
     <string name="production_house">Production house</string>
     <string name="filtergroup">FilterGroup</string>
+    <string name="rating_text">Rating:</string>
+    <string name="rating_number">7.7</string>
 </resources>
