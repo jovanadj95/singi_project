@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="FilterWidget">
-        <attr name="android:entries"/>
+    <declare-styleable name="FilterBaseWidget">
+        <attr name="title" format="string" />
     </declare-styleable>
 </resources>
