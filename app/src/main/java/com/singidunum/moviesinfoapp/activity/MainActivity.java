@@ -3,10 +3,11 @@ package com.singidunum.moviesinfoapp.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.singidunum.moviesinfoapp.BuildConfig;
 import com.singidunum.moviesinfoapp.adapter.MoviesAdapter;
 import com.singidunum.moviesinfoapp.R;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         moviesList = new ArrayList<>();
         recyclerView = findViewById(R.id.movies_list);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         createRetrofitCall();
     }
 
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     MovieResult result = response.body();
                     if (result != null) {
                         moviesList = result.getMovies();
-                        recyclerView.setAdapter(new MoviesAdapter(getApplicationContext(), moviesList));
+                        recyclerView.setAdapter(new MoviesAdapter(MainActivity.this, moviesList));
                     }
                 }
             }

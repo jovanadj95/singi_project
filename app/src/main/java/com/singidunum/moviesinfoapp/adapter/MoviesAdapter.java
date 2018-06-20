@@ -36,14 +36,14 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MovieViewHolder holder, final int position) {
         final Movie movie = moviesList.get(position);
         Picasso.get()
-                .load(movie.getPosterPath())
+                .load("http://image.tmdb.org/t/p/w185" + movie.getPosterPath())
                 .into(holder.poster);
         holder.title.setText(movie.getTitle());
         holder.overview.setText(movie.getOverview());
-        holder.rating.setText(String.format("%d",movie.getVoteAverage()));
+        holder.rating.setText(movie.getVoteAverage().toString());
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,5 +75,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
             overview = itemView.findViewById(R.id.overview);
             rating = itemView.findViewById(R.id.rating);
         }
+
     }
 }
