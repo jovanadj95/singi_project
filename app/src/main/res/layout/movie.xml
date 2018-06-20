@@ -3,17 +3,14 @@
     android:id="@+id/movie"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:onClick="goToMovieDetails"
     android:orientation="horizontal"
     android:padding="10dp">
-    <!--TODO add on Click listener in the class-->
 
     <ImageView
         android:id="@+id/poster"
         android:layout_width="100dp"
         android:layout_height="150dp"
         android:src="@drawable/deadpool2" />
-
 
     <LinearLayout
         android:layout_width="wrap_content"

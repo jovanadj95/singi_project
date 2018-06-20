@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.singidunum.moviesinfoapp.BuildConfig;
 import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.activity.MovieDetailsActivity;
 import com.singidunum.moviesinfoapp.model.api.Movie;
@@ -39,7 +40,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
     public void onBindViewHolder(@NonNull final MovieViewHolder holder, final int position) {
         final Movie movie = moviesList.get(position);
         Picasso.get()
-                .load("http://image.tmdb.org/t/p/w185" + movie.getPosterPath())
+                .load(BuildConfig.API_IMG_BASE + movie.getPosterPath())
                 .into(holder.poster);
         holder.title.setText(movie.getTitle());
         holder.overview.setText(movie.getOverview());

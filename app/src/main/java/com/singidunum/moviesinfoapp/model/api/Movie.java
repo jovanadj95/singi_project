@@ -24,7 +24,7 @@ public class Movie {
     private String title;
     @SerializedName("popularity")
     @Expose
-    private Float popularity;
+    private Double popularity;
     @SerializedName("poster_path")
     @Expose
     private String posterPath;
@@ -90,11 +90,11 @@ public class Movie {
         this.title = title;
     }
 
-    public Float getPopularity() {
+    public Double getPopularity() {
         return popularity;
     }
 
-    public void setPopularity(Float popularity) {
+    public void setPopularity(Double popularity) {
         this.popularity = popularity;
     }
 

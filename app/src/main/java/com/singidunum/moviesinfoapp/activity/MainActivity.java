@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.google.gson.Gson;
 import com.singidunum.moviesinfoapp.BuildConfig;
 import com.singidunum.moviesinfoapp.adapter.MoviesAdapter;
 import com.singidunum.moviesinfoapp.R;
@@ -26,9 +25,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    // TODO call to API TMDB
-    // TODO create adapter for previewing movies (use movie layout for each movie)
-    // TODO add click listener for each movie that will open movie details activity
     // TODO read last filters and preview the filtered movies
     // TODO include fragments and landscape orientation
 
