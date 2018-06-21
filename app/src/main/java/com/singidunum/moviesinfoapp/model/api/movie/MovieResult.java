@@ -1,4 +1,4 @@
-package com.singidunum.moviesinfoapp.model.api;
+package com.singidunum.moviesinfoapp.model.api.movie;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

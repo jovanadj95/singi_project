@@ -1,13 +1,15 @@
 package com.singidunum.moviesinfoapp.api;
 
-import com.singidunum.moviesinfoapp.model.api.MovieResult;
+import com.singidunum.moviesinfoapp.model.api.pictures.MoviePicturesResult;
+import com.singidunum.moviesinfoapp.model.api.credits.MovieCreditsResult;
+import com.singidunum.moviesinfoapp.model.api.movie.MovieResult;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface MoviesApi {
-    // TODO remember backdrop path for movie details activity
 
     // https://api.themoviedb.org/3/discover/movie?
     // api_key=f7c765a60e4d8a73f2e3686371956f8e&
@@ -18,7 +20,7 @@ public interface MoviesApi {
     // primary_release_date.lte=2014-10-22&
     // with_companies=5&
     // with_genres=28&
-    // with_original_language=en&
+    // with_original_language=en
 
     @GET("/3/discover/movie/")
     Call<MovieResult> getMovies(
@@ -32,4 +34,26 @@ public interface MoviesApi {
             @Query("with_genres") String withGenres,
             @Query("with_original_language") String withOriginalLanguage
     );
+
+    // https://api.themoviedb.org/3/movie/
+    // 383498/credits?
+    // api_key=f7c765a60e4d8a73f2e3686371956f8e
+
+    @GET("/3/movie/{movie_id}/credits")
+    Call<MovieCreditsResult> getCredits(
+            @Path("movie_id") int movieId,
+            @Query("api_key") String apiKey
+    );
+
+    // https://api.themoviedb.org/3/movie/
+    // 383498/images?
+    // api_key=f7c765a60e4d8a73f2e3686371956f8e
+
+    @GET("/3/movie/{movie_id}/images")
+    Call<MoviePicturesResult> getPictures(
+            @Path("movie_id") int movieId,
+            @Query("api_key") String apiKey
+    );
+
+    // TODO implement search box
 }

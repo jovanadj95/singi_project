@@ -11,8 +11,8 @@ import com.singidunum.moviesinfoapp.BuildConfig;
 import com.singidunum.moviesinfoapp.adapter.MoviesAdapter;
 import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.api.MoviesApi;
-import com.singidunum.moviesinfoapp.model.api.Movie;
-import com.singidunum.moviesinfoapp.model.api.MovieResult;
+import com.singidunum.moviesinfoapp.model.api.movie.Movie;
+import com.singidunum.moviesinfoapp.model.api.movie.MovieResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     // TODO include fragments and landscape orientation
 
     private List<Movie> moviesList;
-    private RecyclerView recyclerView;
+    private RecyclerView rvMovieList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         moviesList = new ArrayList<>();
-        recyclerView = findViewById(R.id.movies_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        createRetrofitCall();
+        rvMovieList = findViewById(R.id.movies_list);
+        rvMovieList.setLayoutManager(new LinearLayoutManager(this));
+        createRetrofitGetMoviesCall();
     }
 
-    private void createRetrofitCall() {
+    private void createRetrofitGetMoviesCall() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BuildConfig.API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         MoviesApi moviesApi = retrofit.create(MoviesApi.class);
 
         // TODO implement filters if they are picked
-        // TODO try to implement append_to_response for actors
         Call<MovieResult> call = moviesApi.getMovies(BuildConfig.API_KEY, "en-US",
                 "popularity.desc", 1, "2010-09-15",
                 "2018-10-22", "5", "28", "en");
@@ -75,14 +74,13 @@ public class MainActivity extends AppCompatActivity {
                     MovieResult result = response.body();
                     if (result != null) {
                         moviesList = result.getMovies();
-                        recyclerView.setAdapter(new MoviesAdapter(MainActivity.this, moviesList));
+                        rvMovieList.setAdapter(new MoviesAdapter(MainActivity.this, moviesList));
                     }
                 }
             }
 
             @Override
             public void onFailure(Call<MovieResult> call, Throwable t) {
-                t.printStackTrace();
             }
         });
     }

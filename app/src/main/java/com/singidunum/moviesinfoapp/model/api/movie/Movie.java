@@ -1,4 +1,4 @@
-package com.singidunum.moviesinfoapp.model.api;
+package com.singidunum.moviesinfoapp.model.api.movie;
 
 import java.util.List;
 

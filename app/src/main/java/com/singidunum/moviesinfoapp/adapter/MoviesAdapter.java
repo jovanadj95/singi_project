@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 import com.singidunum.moviesinfoapp.BuildConfig;
 import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.activity.MovieDetailsActivity;
-import com.singidunum.moviesinfoapp.model.api.Movie;
+import com.singidunum.moviesinfoapp.model.api.movie.Movie;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
