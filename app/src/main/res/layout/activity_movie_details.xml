@@ -46,7 +46,7 @@
             android:layout_height="1dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="15dp"
-            android:background="#0004ff" />
+            android:background="@color/blue_view" />
 
         <TextView
             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
             android:layout_height="1dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="15dp"
-            android:background="#0004ff" />
+            android:background="@color/blue_view" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/actors_list"
@@ -72,7 +72,7 @@
             android:layout_height="1dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="15dp"
-            android:background="#0004ff" />
+            android:background="@color/blue_view" />
 
         <TextView
             android:layout_width="match_parent"
@@ -85,7 +85,7 @@
             android:layout_height="1dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="15dp"
-            android:background="#0004ff" />
+            android:background="@color/blue_view" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/pictures_list"
@@ -98,6 +98,6 @@
             android:layout_height="1dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="15dp"
-            android:background="#0004ff" />
+            android:background="@color/blue_view" />
     </LinearLayout>
 </ScrollView>

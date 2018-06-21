@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:background="#02045e"
+            android:background="@color/blue_button"
             android:padding="10dp"
             android:text="@string/change_filters_button" />
     </RelativeLayout>
@@ -35,12 +35,12 @@
         android:layout_height="1dp"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
-        android:background="#0004ff" />
+        android:background="@color/blue_view" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/movies_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="10dp" />
 
 </LinearLayout>

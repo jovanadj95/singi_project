@@ -22,7 +22,7 @@ public interface MoviesApi {
     // with_genres=28&
     // with_original_language=en
 
-    @GET("/3/discover/movie/")
+    @GET("discover/movie/")
     Call<MovieResult> getMovies(
             @Query("api_key") String apiKey,
             @Query("language") String language,
@@ -39,7 +39,7 @@ public interface MoviesApi {
     // 383498/credits?
     // api_key=f7c765a60e4d8a73f2e3686371956f8e
 
-    @GET("/3/movie/{movie_id}/credits")
+    @GET("movie/{movie_id}/credits")
     Call<MovieCreditsResult> getCredits(
             @Path("movie_id") int movieId,
             @Query("api_key") String apiKey
@@ -49,7 +49,7 @@ public interface MoviesApi {
     // 383498/images?
     // api_key=f7c765a60e4d8a73f2e3686371956f8e
 
-    @GET("/3/movie/{movie_id}/images")
+    @GET("movie/{movie_id}/images")
     Call<MoviePicturesResult> getPictures(
             @Path("movie_id") int movieId,
             @Query("api_key") String apiKey
@@ -62,4 +62,9 @@ public interface MoviesApi {
     // query=deadpool&
     // page=1&
     // include_adult=false
+
+    /*@GET("search/movie")
+    Call<MovieSearchResult> findMovie(
+            @Query("")
+    )*/
 }
