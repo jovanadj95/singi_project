@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,6 +19,7 @@ import com.singidunum.moviesinfoapp.model.api.credits.MovieCreditsResult;
 import com.singidunum.moviesinfoapp.model.api.movie.Movie;
 import com.singidunum.moviesinfoapp.model.api.pictures.Backdrop;
 import com.singidunum.moviesinfoapp.model.api.pictures.MoviePicturesResult;
+import com.singidunum.moviesinfoapp.service.ApiRetrofit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +27,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MovieDetailsActivity extends AppCompatActivity {
 
@@ -48,27 +46,24 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.imdb_vote_average)).setText(movie.getVoteAverage().toString());
 
+        MoviesApi moviesApi = createRetrofitApi();
+
         rvCast = findViewById(R.id.actors_list);
         rvCast.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false));
-        createRetrofitGetCreditsCall(movie.getId());
+        getCreditsCall(moviesApi, movie.getId());
 
         rvPictures = findViewById(R.id.pictures_list);
         rvPictures.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false));
-        createRetrofitGetPicturesCall(movie.getId());
+        getPicturesCall(moviesApi, movie.getId());
     }
 
-    private void createRetrofitGetPicturesCall(Integer id) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BuildConfig.API_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+    private MoviesApi createRetrofitApi() {
+        ApiRetrofit apiRetrofit = new ApiRetrofit();
+        return apiRetrofit.getApiRetrofit();
+    }
 
-        MoviesApi moviesApi = retrofit.create(MoviesApi.class);
+    private void getPicturesCall(MoviesApi moviesApi, Integer id) {
         Call<MoviePicturesResult> call = moviesApi.getPictures(id, BuildConfig.API_KEY);
-        getPictures(call);
-    }
-
-    private void getPictures(Call<MoviePicturesResult> call) {
         call.enqueue(new Callback<MoviePicturesResult>() {
             @Override
             public void onResponse(Call<MoviePicturesResult> call, Response<MoviePicturesResult> response) {
@@ -83,23 +78,12 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<MoviePicturesResult> call, Throwable t) {
-                Log.d("FICOFICO", "onFailure: " + t.toString());
             }
         });
     }
 
-    private void createRetrofitGetCreditsCall(Integer id) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BuildConfig.API_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        MoviesApi moviesApi = retrofit.create(MoviesApi.class);
+    private void getCreditsCall(MoviesApi moviesApi, Integer id) {
         Call<MovieCreditsResult> call = moviesApi.getCredits(id, BuildConfig.API_KEY);
-        getCredits(call);
-    }
-
-    private void getCredits(Call<MovieCreditsResult> call) {
         call.enqueue(new Callback<MovieCreditsResult>() {
             @Override
             public void onResponse(Call<MovieCreditsResult> call, Response<MovieCreditsResult> response) {

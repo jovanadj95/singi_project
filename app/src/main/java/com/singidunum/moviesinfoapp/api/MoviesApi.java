@@ -56,4 +56,10 @@ public interface MoviesApi {
     );
 
     // TODO implement search box
+    // https://api.themoviedb.org/3/search/movie?
+    // api_key=f7c765a60e4d8a73f2e3686371956f8e&
+    // language=en-US&
+    // query=deadpool&
+    // page=1&
+    // include_adult=false
 }
