@@ -44,7 +44,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         String movieJson = intent.getStringExtra("movie");
         Movie movie = new Gson().fromJson(movieJson, Movie.class);
 
-        ((TextView) findViewById(R.id.imdb_vote_average)).setText(movie.getVoteAverage().toString());
+        ((TextView) findViewById(R.id.imdb_vote_average)).setText(String.valueOf(movie.getVoteAverage()));
 
         MoviesApi moviesApi = createRetrofitApi();
 

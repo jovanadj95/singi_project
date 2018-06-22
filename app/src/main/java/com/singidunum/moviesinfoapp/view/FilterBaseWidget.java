@@ -6,17 +6,16 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.singidunum.moviesinfoapp.R;
 
-
 public class FilterBaseWidget extends LinearLayout implements View.OnClickListener {
 
     private View content;
-    private ImageButton expandButton;
+    private ImageView expandButton;
 
     public FilterBaseWidget(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -48,8 +47,8 @@ public class FilterBaseWidget extends LinearLayout implements View.OnClickListen
             content.setVisibility(GONE);
             expandButton.setImageResource(R.drawable.ic_arrow_right);
         } else {
-            content.setVisibility(VISIBLE);
             expandButton.setImageResource(R.drawable.ic_arrow_down);
+            content.setVisibility(VISIBLE);
         }
     }
 }
