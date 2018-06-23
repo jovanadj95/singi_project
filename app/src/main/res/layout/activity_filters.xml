@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    tools:context=".FiltersActivity">
+    tools:context=".activity.FiltersActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,23 +18,44 @@
             android:text="@string/change_filters"
             android:textSize="18sp" />
 
-        <com.singidunum.moviesinfoapp.view.FilterBaseWidget
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="15dp"
-            android:background="#0004ff" />
+            android:background="@color/blue_view" />
+
+        <com.singidunum.moviesinfoapp.view.ListFilterWidget
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Genres" />
+
+        <com.singidunum.moviesinfoapp.view.DatePickerWidget
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Date from" />
+
+        <com.singidunum.moviesinfoapp.view.DatePickerWidget
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Date to" />
+
+        <com.singidunum.moviesinfoapp.view.ListFilterWidget
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Languages" />
+
+        <com.singidunum.moviesinfoapp.view.ListFilterWidget
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Production houses" />
 
         <Button
             android:id="@+id/save_filters"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="#02045e"
+            android:background="@color/blue_button"
             android:text="@string/save_filters" />
     </LinearLayout>
 

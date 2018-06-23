@@ -6,17 +6,17 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageButton;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.singidunum.moviesinfoapp.R;
 
-
 public class FilterBaseWidget extends LinearLayout implements View.OnClickListener {
 
     private View content;
-    private ImageButton expandButton;
+    private ImageView expandButton;
 
     public FilterBaseWidget(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -48,8 +48,20 @@ public class FilterBaseWidget extends LinearLayout implements View.OnClickListen
             content.setVisibility(GONE);
             expandButton.setImageResource(R.drawable.ic_arrow_right);
         } else {
-            content.setVisibility(VISIBLE);
             expandButton.setImageResource(R.drawable.ic_arrow_down);
+            closeExpanded(((ViewGroup) content.getParent().getParent().getParent()));
+            content.setVisibility(VISIBLE);
+        }
+    }
+
+    private void closeExpanded(ViewGroup parent) {
+        for (int i = 0; i < parent.getChildCount(); i++) {
+            View child = parent.getChildAt(i);
+            if (child != null && child.findViewById(R.id.content) != null && child.findViewById(R.id.content).isShown()) {
+                child.findViewById(R.id.content).setVisibility(GONE);
+                ((ImageView) child.findViewById(R.id.expand_button)).setImageResource(R.drawable.ic_arrow_right);
+            }
         }
     }
 }
+

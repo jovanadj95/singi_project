@@ -5,7 +5,7 @@
     <string name="deadpool_plot">Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boy\'s life.</string>
     <string name="deadpool_actors">Josh Brolin, Ryan Reynolds, Morena Baccarin, Zazie Beetz</string>
     <string name="deadpool_2">Deadpool 2</string>
-    <string name="deadpool_avg_rating">IMDB Vote Average: 7.9</string>
+    <string name="deadpool_avg_rating">IMDB Vote Average:</string>
     <string name="change_filters">Change filters:</string>
     <string name="save_filters">Save filters</string>
     <string name="genre">Genre:</string>
@@ -14,4 +14,10 @@
     <string name="language">Language</string>
     <string name="production_house">Production house</string>
     <string name="filtergroup">FilterGroup</string>
+    <string name="rating_text">Rating:</string>
+    <string name="ryan_reynolds">Ryan Reynolds</string>
+    <string name="wade_wilson">Wade Wilson</string>
+    <string name="actors">Actors</string>
+    <string name="movie_pictures">Movie Pictures</string>
+    <string name="no_data">No data</string>
 </resources>

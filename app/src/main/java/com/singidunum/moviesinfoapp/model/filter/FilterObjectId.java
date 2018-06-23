@@ -1,4 +1,4 @@
-package com.singidunum.moviesinfoapp;
+package com.singidunum.moviesinfoapp.model.filter;
 
 public class FilterObjectId {
 

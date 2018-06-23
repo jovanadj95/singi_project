@@ -10,7 +10,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField 'String', 'API_URL', '"http://api.themoviedb.org"'
+        buildConfigField 'String', 'API_URL', '"http://api.themoviedb.org/3/"'
+        buildConfigField 'String', 'API_KEY', '"f7c765a60e4d8a73f2e3686371956f8e"'
+        buildConfigField 'String', 'API_IMG_BASE', '"http://image.tmdb.org/t/p/w185"'
     }
     buildTypes {
         release {
@@ -33,7 +35,7 @@ dependencies {
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    // Retrofit
+    // ApiRetrofit
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 }
