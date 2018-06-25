@@ -4,6 +4,8 @@ import com.singidunum.moviesinfoapp.model.api.pictures.MoviePicturesResult;
 import com.singidunum.moviesinfoapp.model.api.credits.MovieCreditsResult;
 import com.singidunum.moviesinfoapp.model.api.movie.MovieResult;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -30,9 +32,9 @@ public interface MoviesApi {
             @Query("page") int page,
             @Query("primary_release_date.gte") String primaryReleaseDateGte,
             @Query("primary_release_date.lte") String primaryReleaseDateLte,
-            @Query("with_companies") String withCompanies,
-            @Query("with_genres") String withGenres,
-            @Query("with_original_language") String withOriginalLanguage
+            @Query("with_companies") ArrayList<String> withCompanies,
+            @Query("with_genres") ArrayList<String> withGenres,
+            @Query("with_original_language") ArrayList<String> withOriginalLanguage
     );
 
     // https://api.themoviedb.org/3/movie/
