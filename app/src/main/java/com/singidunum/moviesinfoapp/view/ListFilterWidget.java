@@ -8,8 +8,11 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.model.filter.FilterObjectId;
+import com.singidunum.moviesinfoapp.service.SharedStorageData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,15 +29,25 @@ public class ListFilterWidget extends FilterBaseWidget {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
 
-        setList(getList(((TextView) findViewById(R.id.header_name)).getText().toString()));
-        LinearLayout frameLayout = findViewById(R.id.content);
+        String title = ((TextView) findViewById(R.id.header_name)).getText().toString();
+        setList(getList(title));
+        LinearLayout content = findViewById(R.id.content);
         for (int i = 0; i < list.size(); i++) {
-            final CheckBox checkBox = new CheckBox(frameLayout.getContext());
+            final CheckBox checkBox = new CheckBox(content.getContext());
             checkBox.setText(list.get(i).getDisplayName());
-            frameLayout.addView(checkBox);
+            checkBox.setTag(list.get(i).getId());
+            content.addView(checkBox);
             checkBox.setTextColor(getResources().getColor(android.R.color.darker_gray));
             checkBox.setButtonDrawable(R.drawable.ic_unchecked);
             final int position = i;
+            selected = getSelected(title);
+            for (int j = 0; j < selected.size(); j++) {
+                if (selected.get(j).getDisplayName().equals(list.get(i).getDisplayName())) {
+                    checkBox.setChecked(true);
+                    checkBox.setButtonDrawable(R.drawable.ic_checked);
+                    break;
+                }
+            }
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -50,6 +63,27 @@ public class ListFilterWidget extends FilterBaseWidget {
         }
     }
 
+    private List<FilterObjectId> getSelected(String title) {
+        String data = null;
+        switch (title) {
+            case "Genres":
+                data = SharedStorageData.getGenres(getContext());
+                break;
+            case "Languages":
+                data = SharedStorageData.getLanguages(getContext());
+                break;
+            case "Production houses":
+                data = SharedStorageData.getProductionHouses(getContext());
+                break;
+        }
+        if (data == null) {
+            return new ArrayList<>();
+        } else {
+            return new Gson().fromJson(data, new TypeToken<ArrayList<FilterObjectId>>() {
+            }.getType());
+        }
+    }
+
     private List<FilterObjectId> getList(String title) {
         switch (title) {
             case "Genres":
@@ -59,7 +93,7 @@ public class ListFilterWidget extends FilterBaseWidget {
             case "Production houses":
                 return getProductions();
             default:
-                return null;
+                return new ArrayList<>();
         }
     }
 
