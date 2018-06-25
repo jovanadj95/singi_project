@@ -16,6 +16,7 @@ import com.singidunum.moviesinfoapp.model.api.movie.MovieResult;
 import com.singidunum.moviesinfoapp.service.ApiRetrofit;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Nav
     // TODO read last filters and preview the filtered movies
     // TODO include fragments and landscape orientation
 
+    private List<Movie> moviesList;
     private MoviesAdapter adapter;
     private int page;
 
@@ -41,9 +43,10 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Nav
             }
         });
 
+        moviesList = new ArrayList<>();
         RecyclerView rvMovieList = findViewById(R.id.movies_list);
         rvMovieList.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MoviesAdapter(MainActivity.this, new ArrayList<Movie>());
+        adapter = new MoviesAdapter(MainActivity.this, moviesList);
         rvMovieList.setAdapter(adapter);
         createRetrofitGetMoviesCall(1);
     }
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Nav
                 if (response.body() != null) {
                     MovieResult result = response.body();
                     if (result != null) {
+                        moviesList = result.getMovies();
                         adapter.updateData(result.getMovies(), page == result.getTotalPages() ? 0 : 1);
                     }
                 }
