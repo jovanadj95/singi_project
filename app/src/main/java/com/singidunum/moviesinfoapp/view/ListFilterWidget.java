@@ -38,13 +38,12 @@ public class ListFilterWidget extends FilterBaseWidget {
             checkBox.setTag(list.get(i).getId());
             content.addView(checkBox);
             checkBox.setTextColor(getResources().getColor(android.R.color.darker_gray));
-            checkBox.setButtonDrawable(R.drawable.ic_unchecked);
+            checkBox.setButtonDrawable(R.drawable.checkbox_selector);
             final int position = i;
             selected = getSelected(title);
             for (int j = 0; j < selected.size(); j++) {
                 if (selected.get(j).getDisplayName().equals(list.get(i).getDisplayName())) {
                     checkBox.setChecked(true);
-                    checkBox.setButtonDrawable(R.drawable.ic_checked);
                     break;
                 }
             }
@@ -53,10 +52,8 @@ public class ListFilterWidget extends FilterBaseWidget {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         selected.add(list.get(position));
-                        checkBox.setButtonDrawable(R.drawable.ic_checked);
                     } else {
                         selected.remove(list.get(position));
-                        checkBox.setButtonDrawable(R.drawable.ic_unchecked);
                     }
                 }
             });
@@ -68,9 +65,6 @@ public class ListFilterWidget extends FilterBaseWidget {
         switch (title) {
             case "Genres":
                 data = SharedStorageData.getGenres(getContext());
-                break;
-            case "Languages":
-                data = SharedStorageData.getLanguages(getContext());
                 break;
             case "Production houses":
                 data = SharedStorageData.getProductionHouses(getContext());
@@ -88,8 +82,6 @@ public class ListFilterWidget extends FilterBaseWidget {
         switch (title) {
             case "Genres":
                 return getGenres();
-            case "Languages":
-                return getLanguages();
             case "Production houses":
                 return getProductions();
             default:
@@ -124,20 +116,6 @@ public class ListFilterWidget extends FilterBaseWidget {
         genres.add(new FilterObjectId("10752", "War"));
         genres.add(new FilterObjectId("37", "Western"));
         return genres;
-    }
-
-    private List<FilterObjectId> getLanguages() {
-        List<FilterObjectId> languages = new ArrayList<>();
-        languages.add(new FilterObjectId("en", "English"));
-        languages.add(new FilterObjectId("es", "Spanish"));
-        languages.add(new FilterObjectId("fr", "French"));
-        languages.add(new FilterObjectId("it", "Italian"));
-        languages.add(new FilterObjectId("ru", "Russian"));
-        languages.add(new FilterObjectId("sr", "Serbian"));
-        languages.add(new FilterObjectId("el", "Greek"));
-        languages.add(new FilterObjectId("hr", "Croatian"));
-        languages.add(new FilterObjectId("de", "German"));
-        return languages;
     }
 
     private List<FilterObjectId> getProductions() {

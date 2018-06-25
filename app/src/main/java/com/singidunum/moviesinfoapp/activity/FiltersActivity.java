@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -48,7 +49,7 @@ public class FiltersActivity extends AppCompatActivity {
                         SharedStorageData.setDateTo(this, saveDate(content));
                         break;
                     case "Languages":
-                        SharedStorageData.setLanguages(this, new Gson().toJson(saveCheckboxes(content)));
+                        SharedStorageData.setLanguages(this, new Gson().toJson(saveRadioButton(content)));
                         break;
                     case "Production houses":
                         SharedStorageData.setProductionHouses(this, new Gson().toJson(saveCheckboxes(content)));
@@ -59,8 +60,21 @@ public class FiltersActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
+    private FilterObjectId saveRadioButton(ViewGroup content) {
+        ViewGroup radioGroup = (ViewGroup) content.getChildAt(0);
+        for (int i = 0; i < radioGroup.getChildCount(); i++) {
+            View child = radioGroup.getChildAt(i);
+            if (child != null && child instanceof RadioButton) {
+                if (((RadioButton) child).isChecked()) {
+                    return new FilterObjectId(child.getTag().toString(), ((RadioButton) child).getText().toString());
+                }
+            }
+        }
+        return null;
+    }
+
     private String saveDate(ViewGroup content) {
-        String date = "";
+        String date = null;
         for (int i = 0; i < content.getChildCount(); i++) {
             View child = content.getChildAt(i);
             if (child != null && child.findViewById(R.id.date_picker) != null) {

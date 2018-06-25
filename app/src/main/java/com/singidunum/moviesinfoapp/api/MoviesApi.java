@@ -29,12 +29,13 @@ public interface MoviesApi {
             @Query("api_key") String apiKey,
             @Query("language") String language,
             @Query("sort_by") String sortBy,
+            @Query("include_adult") Boolean includeAdult,
             @Query("page") int page,
             @Query("primary_release_date.gte") String primaryReleaseDateGte,
             @Query("primary_release_date.lte") String primaryReleaseDateLte,
             @Query("with_companies") ArrayList<String> withCompanies,
             @Query("with_genres") ArrayList<String> withGenres,
-            @Query("with_original_language") ArrayList<String> withOriginalLanguage
+            @Query("with_original_language") String withOriginalLanguage
     );
 
     // https://api.themoviedb.org/3/movie/

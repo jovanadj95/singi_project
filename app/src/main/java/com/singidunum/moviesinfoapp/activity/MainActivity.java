@@ -28,7 +28,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements MoviesAdapter.NavigationListener {
 
-    // TODO change Languages filter list from checkboxes into radio button list
     // TODO include fragments and landscape orientation
 
     private List<Movie> moviesList;
@@ -62,12 +61,21 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Nav
 
         ArrayList<String> productionHouses = getId("Production houses");
         ArrayList<String> genres = getId("Genres");
-        ArrayList<String> languages = getId("Languages");
+        String language = getLanguage();
 
         Call<MovieResult> call = moviesApi.getMovies(BuildConfig.API_KEY, "en-US",
-                "popularity.desc", page, SharedStorageData.getDateFrom(this),
-                SharedStorageData.getDateTo(this), productionHouses, genres, languages);
+                "popularity.desc", false, page, SharedStorageData.getDateFrom(this),
+                SharedStorageData.getDateTo(this), productionHouses, genres, language);
         getMovies(call);
+    }
+
+    private String getLanguage() {
+        FilterObjectId language = new Gson().fromJson(SharedStorageData.getLanguages(this), FilterObjectId.class);
+        if (language == null || language.getId().equals("all")) {
+            return null;
+        } else {
+            return language.getId();
+        }
     }
 
     private ArrayList<String> getId(String filter) {
@@ -75,9 +83,6 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Nav
         switch (filter) {
             case "Genres":
                 data = SharedStorageData.getGenres(this);
-                break;
-            case "Languages":
-                data = SharedStorageData.getLanguages(this);
                 break;
             case "Production houses":
                 data = SharedStorageData.getProductionHouses(this);
