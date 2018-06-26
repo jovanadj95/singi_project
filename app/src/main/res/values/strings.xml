@@ -19,5 +19,6 @@
     <string name="wade_wilson">Wade Wilson</string>
     <string name="actors">Actors</string>
     <string name="movie_pictures">Movie Pictures</string>
-    <string name="no_data">No data</string>
+    <string name="no_movies">No movies found!</string>
+    <string name="search">Search</string>
 </resources>

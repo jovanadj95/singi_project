@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Nav
         adapter = new MoviesAdapter(MainActivity.this, moviesList);
         rvMovieList.setAdapter(adapter);
         createRetrofitGetMoviesCall(1);
-
     }
 
     private void createRetrofitGetMoviesCall(int page) {
@@ -71,11 +70,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Nav
 
     private String getLanguage() {
         FilterObjectId language = new Gson().fromJson(SharedStorageData.getLanguages(this), FilterObjectId.class);
-        if (language == null || language.getId().equals("all")) {
-            return null;
-        } else {
-            return language.getId();
-        }
+        return language.getId() == null ? "en" : language.getId();
     }
 
     private ArrayList<String> getId(String filter) {

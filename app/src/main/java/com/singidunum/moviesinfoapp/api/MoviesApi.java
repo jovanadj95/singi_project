@@ -58,7 +58,6 @@ public interface MoviesApi {
             @Query("api_key") String apiKey
     );
 
-    // TODO implement search box
     // https://api.themoviedb.org/3/search/movie?
     // api_key=f7c765a60e4d8a73f2e3686371956f8e&
     // language=en-US&
@@ -68,6 +67,10 @@ public interface MoviesApi {
 
     /*@GET("search/movie")
     Call<MovieSearchResult> findMovie(
-            @Query("")
-    )*/
+            @Query("api_key") String apiKey,
+            @Query("language") String language,
+            @Query("query") String query,
+            @Query("include_adult") Boolean includeAdult,
+            @Query("page") int page
+    );*/
 }

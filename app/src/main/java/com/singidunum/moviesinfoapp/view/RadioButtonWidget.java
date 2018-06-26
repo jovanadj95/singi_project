@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -20,7 +19,6 @@ import java.util.List;
 public class RadioButtonWidget extends FilterBaseWidget {
 
     private List<FilterObjectId> languages = new ArrayList<>();
-    private String selected;
 
     public RadioButtonWidget(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -36,17 +34,16 @@ public class RadioButtonWidget extends FilterBaseWidget {
         getLanguages();
 
         for (int i = 0; i < languages.size(); i++) {
-            final RadioButton radioButton = new RadioButton(content.getContext());
-            final String title = languages.get(i).getDisplayName();
-            radioButton.setText(title);
+            RadioButton radioButton = new RadioButton(content.getContext());
+            radioButton.setText(languages.get(i).getDisplayName());
             radioButton.setTag(languages.get(i).getId());
             radioButton.setTextColor(getResources().getColor(android.R.color.darker_gray));
             radioGroup.addView(radioButton);
             radioButton.setButtonDrawable(R.drawable.radio_button_selector);
 
             FilterObjectId language = new Gson().fromJson(SharedStorageData.getLanguages(getContext()), FilterObjectId.class);
-            selected = language == null ? "All" : language.getDisplayName();
-            if (!TextUtils.isEmpty(selected) && title.equals(selected)) {
+            String selected = language == null ? "English" : language.getDisplayName();
+            if (!TextUtils.isEmpty(selected) && languages.get(i).getDisplayName().equals(selected)) {
                 radioButton.setChecked(true);
             }
         }
@@ -54,7 +51,6 @@ public class RadioButtonWidget extends FilterBaseWidget {
     }
 
     private void getLanguages() {
-        languages.add(new FilterObjectId("all", "All"));
         languages.add(new FilterObjectId("en", "English"));
         languages.add(new FilterObjectId("es", "Spanish"));
         languages.add(new FilterObjectId("fr", "French"));
