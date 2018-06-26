@@ -2,6 +2,7 @@ package com.singidunum.moviesinfoapp.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.DatePicker;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.service.SharedStorageData;
+
+import java.util.Calendar;
 
 public class DatePickerWidget extends FilterBaseWidget {
 
@@ -35,11 +38,15 @@ public class DatePickerWidget extends FilterBaseWidget {
                 date = SharedStorageData.getDateTo(getContext());
                 break;
         }
-        if (date != null && !date.equals("")) {
+        if (!TextUtils.isEmpty(date)) {
             String day = date.substring(date.lastIndexOf("-") + 1);
             String month = date.substring(date.indexOf("-") + 1, date.lastIndexOf("-"));
             String year = date.substring(0, date.indexOf("-"));
-            datePicker.updateDate(Integer.parseInt(year), Integer.parseInt(month)-1, Integer.parseInt(day));
+            datePicker.updateDate(Integer.parseInt(year), Integer.parseInt(month) - 1, Integer.parseInt(day));
+        } else {
+            if (title.equals("Date from")) {
+                datePicker.updateDate(Calendar.getInstance().get(Calendar.YEAR) - 5, Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+            }
         }
     }
 }

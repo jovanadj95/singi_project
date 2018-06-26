@@ -11,14 +11,13 @@ import android.widget.RadioGroup;
 import com.google.gson.Gson;
 import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.model.filter.FilterObjectId;
+import com.singidunum.moviesinfoapp.service.FilterLists;
 import com.singidunum.moviesinfoapp.service.SharedStorageData;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RadioButtonWidget extends FilterBaseWidget {
-
-    private List<FilterObjectId> languages = new ArrayList<>();
 
     public RadioButtonWidget(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -31,7 +30,7 @@ public class RadioButtonWidget extends FilterBaseWidget {
         LinearLayout content = findViewById(R.id.content);
         RadioGroup radioGroup = new RadioGroup(content.getContext());
         radioGroup.setOrientation(VERTICAL);
-        getLanguages();
+        List<FilterObjectId> languages = new FilterLists().getLanguages();
 
         for (int i = 0; i < languages.size(); i++) {
             RadioButton radioButton = new RadioButton(content.getContext());
@@ -48,17 +47,5 @@ public class RadioButtonWidget extends FilterBaseWidget {
             }
         }
         content.addView(radioGroup);
-    }
-
-    private void getLanguages() {
-        languages.add(new FilterObjectId("en", "English"));
-        languages.add(new FilterObjectId("es", "Spanish"));
-        languages.add(new FilterObjectId("fr", "French"));
-        languages.add(new FilterObjectId("it", "Italian"));
-        languages.add(new FilterObjectId("ru", "Russian"));
-        languages.add(new FilterObjectId("sr", "Serbian"));
-        languages.add(new FilterObjectId("el", "Greek"));
-        languages.add(new FilterObjectId("hr", "Croatian"));
-        languages.add(new FilterObjectId("de", "German"));
     }
 }

@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.model.filter.FilterObjectId;
+import com.singidunum.moviesinfoapp.service.FilterLists;
 import com.singidunum.moviesinfoapp.service.SharedStorageData;
 
 import java.util.ArrayList;
@@ -81,9 +82,9 @@ public class ListFilterWidget extends FilterBaseWidget {
     private List<FilterObjectId> getList(String title) {
         switch (title) {
             case "Genres":
-                return getGenres();
+                return new FilterLists().getGenres();
             case "Production houses":
-                return getProductions();
+                return new FilterLists().getProductions();
             default:
                 return new ArrayList<>();
         }
@@ -92,44 +93,5 @@ public class ListFilterWidget extends FilterBaseWidget {
     public void setList(List<FilterObjectId> list) {
         this.list.clear();
         this.list = list;
-    }
-
-    private List<FilterObjectId> getGenres() {
-        List<FilterObjectId> genres = new ArrayList<>();
-        genres.add(new FilterObjectId("28", "Action"));
-        genres.add(new FilterObjectId("12", "Adventure"));
-        genres.add(new FilterObjectId("16", "Animation"));
-        genres.add(new FilterObjectId("35", "Comedy"));
-        genres.add(new FilterObjectId("80", "Crime"));
-        genres.add(new FilterObjectId("99", "Documentary"));
-        genres.add(new FilterObjectId("18", "Drama"));
-        genres.add(new FilterObjectId("10751", "Family"));
-        genres.add(new FilterObjectId("14", "Fantasy"));
-        genres.add(new FilterObjectId("36", "History"));
-        genres.add(new FilterObjectId("27", "Horror"));
-        genres.add(new FilterObjectId("10402", "Music"));
-        genres.add(new FilterObjectId("9648", "Mystery"));
-        genres.add(new FilterObjectId("10749", "Romance"));
-        genres.add(new FilterObjectId("878", "Science Fiction"));
-        genres.add(new FilterObjectId("10770", "TV Movie"));
-        genres.add(new FilterObjectId("53", "Thriller"));
-        genres.add(new FilterObjectId("10752", "War"));
-        genres.add(new FilterObjectId("37", "Western"));
-        return genres;
-    }
-
-    private List<FilterObjectId> getProductions() {
-        List<FilterObjectId> productions = new ArrayList<>();
-        productions.add(new FilterObjectId("3036", "Walt Disney Studios Motion Pictures"));
-        productions.add(new FilterObjectId("17", "Warner Bros. Entertainment"));
-        productions.add(new FilterObjectId("5", "Columbia Pictures"));
-        productions.add(new FilterObjectId("25", "20th Century Fox"));
-        productions.add(new FilterObjectId("21", "Metro-Goldwyn-Mayer"));
-        productions.add(new FilterObjectId("33", "Universal Pictures"));
-        productions.add(new FilterObjectId("4", "Paramount"));
-        productions.add(new FilterObjectId("1632", "Lionsgate"));
-        productions.add(new FilterObjectId("7", "DreamWorks"));
-        productions.add(new FilterObjectId("19551", "Marvel Enterprises"));
-        return productions;
     }
 }

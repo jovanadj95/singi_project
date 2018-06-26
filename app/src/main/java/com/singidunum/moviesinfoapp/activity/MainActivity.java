@@ -28,8 +28,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements MoviesAdapter.NavigationListener {
 
-    // TODO include fragments and landscape orientation
-
     private List<Movie> moviesList;
     private MoviesAdapter adapter;
     private int page;
@@ -70,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Nav
 
     private String getLanguage() {
         FilterObjectId language = new Gson().fromJson(SharedStorageData.getLanguages(this), FilterObjectId.class);
-        return language.getId() == null ? "en" : language.getId();
+        return language == null ? "en" : language.getId();
     }
 
     private ArrayList<String> getId(String filter) {
