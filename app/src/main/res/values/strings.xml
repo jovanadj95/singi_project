@@ -21,4 +21,5 @@
     <string name="movie_pictures">Movie Pictures</string>
     <string name="no_movies">No movies found!</string>
     <string name="search">Search</string>
+    <string name="clear_filters">Clear filters</string>
 </resources>
