@@ -4,6 +4,8 @@ import com.singidunum.moviesinfoapp.model.api.pictures.MoviePicturesResult;
 import com.singidunum.moviesinfoapp.model.api.credits.MovieCreditsResult;
 import com.singidunum.moviesinfoapp.model.api.movie.MovieResult;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -27,11 +29,12 @@ public interface MoviesApi {
             @Query("api_key") String apiKey,
             @Query("language") String language,
             @Query("sort_by") String sortBy,
+            @Query("include_adult") Boolean includeAdult,
             @Query("page") int page,
             @Query("primary_release_date.gte") String primaryReleaseDateGte,
             @Query("primary_release_date.lte") String primaryReleaseDateLte,
-            @Query("with_companies") String withCompanies,
-            @Query("with_genres") String withGenres,
+            @Query("with_companies") ArrayList<String> withCompanies,
+            @Query("with_genres") ArrayList<String> withGenres,
             @Query("with_original_language") String withOriginalLanguage
     );
 
@@ -55,7 +58,6 @@ public interface MoviesApi {
             @Query("api_key") String apiKey
     );
 
-    // TODO implement search box
     // https://api.themoviedb.org/3/search/movie?
     // api_key=f7c765a60e4d8a73f2e3686371956f8e&
     // language=en-US&
@@ -65,6 +67,10 @@ public interface MoviesApi {
 
     /*@GET("search/movie")
     Call<MovieSearchResult> findMovie(
-            @Query("")
-    )*/
+            @Query("api_key") String apiKey,
+            @Query("language") String language,
+            @Query("query") String query,
+            @Query("include_adult") Boolean includeAdult,
+            @Query("page") int page
+    );*/
 }

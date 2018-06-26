@@ -31,5 +31,4 @@
         android:gravity="center"
         android:maxWidth="100dp"
         android:text="@string/wade_wilson" />
-
 </LinearLayout>

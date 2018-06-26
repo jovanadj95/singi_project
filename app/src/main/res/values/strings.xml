@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MoviesInfoApp</string>
+    <string name="app_name">Movies Info</string>
     <string name="list_of_movies">List of movies</string>
     <string name="change_filters_button">Change filters</string>
     <string name="deadpool_plot">Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boy\'s life.</string>
@@ -19,5 +19,7 @@
     <string name="wade_wilson">Wade Wilson</string>
     <string name="actors">Actors</string>
     <string name="movie_pictures">Movie Pictures</string>
-    <string name="no_data">No data</string>
+    <string name="no_movies">No movies found!</string>
+    <string name="search">Search</string>
+    <string name="clear_filters">Clear filters</string>
 </resources>

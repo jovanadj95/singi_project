@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -15,6 +16,7 @@ import com.singidunum.moviesinfoapp.model.filter.FilterObjectId;
 import com.singidunum.moviesinfoapp.service.SharedStorageData;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class FiltersActivity extends AppCompatActivity {
@@ -30,6 +32,81 @@ public class FiltersActivity extends AppCompatActivity {
                 saveFilters((ViewGroup) findViewById(R.id.save_filters).getParent());
             }
         });
+
+        findViewById(R.id.clear_filters).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearFilters((ViewGroup) findViewById(R.id.save_filters).getParent().getParent());
+            }
+        });
+    }
+
+    private void clearFilters(ViewGroup parent) {
+        parent = (ViewGroup) parent.getChildAt(0);
+        for (int i = 0; i < parent.getChildCount(); i++) {
+            View child = parent.getChildAt(i);
+            if (child != null && child.findViewById(R.id.header_name) != null && child.findViewById(R.id.content) != null) {
+                ViewGroup content = child.findViewById(R.id.content);
+                switch (((TextView) child.findViewById(R.id.header_name)).getText().toString()) {
+                    case "Genres":
+                        clearCheckboxes(content);
+                        break;
+                    case "Date from":
+                        clearDate(content, true);
+                        break;
+                    case "Date to":
+                        clearDate(content, false);
+                        break;
+                    case "Languages":
+                        clearRadioButton(content);
+                        break;
+                    case "Production houses":
+                        clearCheckboxes(content);
+                        break;
+                }
+            }
+        }
+    }
+
+    private void clearRadioButton(ViewGroup content) {
+        ViewGroup radioGroup = (ViewGroup) content.getChildAt(0);
+        for (int i = 0; i < radioGroup.getChildCount(); i++) {
+            View child = radioGroup.getChildAt(i);
+            if (child != null && child instanceof RadioButton) {
+                if (((RadioButton) child).isChecked()) {
+                    if (!((RadioButton) child).getText().toString().equals("English")) {
+                        ((RadioButton) child).setChecked(false);
+                    }
+                } else if (!((RadioButton) child).isChecked() && ((RadioButton) child).getText().toString().equals("English")) {
+                    ((RadioButton) child).setChecked(true);
+                }
+            }
+        }
+    }
+
+    private void clearDate(ViewGroup content, boolean from) {
+        for (int i = 0; i < content.getChildCount(); i++) {
+            View child = content.getChildAt(i);
+            if (child != null && child.findViewById(R.id.date_picker) != null) {
+                DatePicker datePicker = child.findViewById(R.id.date_picker);
+                if (from) {
+                    datePicker.updateDate(Calendar.getInstance().get(Calendar.YEAR) - 5, Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+                } else {
+                    datePicker.updateDate(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+                }
+            }
+        }
+    }
+
+    private void clearCheckboxes(ViewGroup content) {
+        for (int i = 0; i < content.getChildCount(); i++) {
+            View child = content.getChildAt(i);
+            if (child != null && child instanceof CheckBox) {
+                if (((CheckBox) child).isChecked()) {
+                    ((CheckBox) child).setChecked(false);
+                }
+            }
+        }
     }
 
     private void saveFilters(ViewGroup parent) {
@@ -48,7 +125,7 @@ public class FiltersActivity extends AppCompatActivity {
                         SharedStorageData.setDateTo(this, saveDate(content));
                         break;
                     case "Languages":
-                        SharedStorageData.setLanguages(this, new Gson().toJson(saveCheckboxes(content)));
+                        SharedStorageData.setLanguages(this, new Gson().toJson(saveRadioButton(content)));
                         break;
                     case "Production houses":
                         SharedStorageData.setProductionHouses(this, new Gson().toJson(saveCheckboxes(content)));
@@ -59,8 +136,21 @@ public class FiltersActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
+    private FilterObjectId saveRadioButton(ViewGroup content) {
+        ViewGroup radioGroup = (ViewGroup) content.getChildAt(0);
+        for (int i = 0; i < radioGroup.getChildCount(); i++) {
+            View child = radioGroup.getChildAt(i);
+            if (child != null && child instanceof RadioButton) {
+                if (((RadioButton) child).isChecked()) {
+                    return new FilterObjectId(child.getTag().toString(), ((RadioButton) child).getText().toString());
+                }
+            }
+        }
+        return null;
+    }
+
     private String saveDate(ViewGroup content) {
-        String date = "";
+        String date = null;
         for (int i = 0; i < content.getChildCount(); i++) {
             View child = content.getChildAt(i);
             if (child != null && child.findViewById(R.id.date_picker) != null) {
