@@ -7,7 +7,7 @@ import java.util.List;
 
 public class FilterLists {
 
-    public List<FilterObjectId> getGenres() {
+    public static List<FilterObjectId> getGenres() {
         List<FilterObjectId> genres = new ArrayList<>();
         genres.add(new FilterObjectId("28", "Action"));
         genres.add(new FilterObjectId("12", "Adventure"));
@@ -31,7 +31,7 @@ public class FilterLists {
         return genres;
     }
 
-    public List<FilterObjectId> getProductions() {
+    public static List<FilterObjectId> getProductions() {
         List<FilterObjectId> productions = new ArrayList<>();
         productions.add(new FilterObjectId("3036", "Walt Disney Studios Motion Pictures"));
         productions.add(new FilterObjectId("17", "Warner Bros. Entertainment"));
@@ -46,7 +46,7 @@ public class FilterLists {
         return productions;
     }
 
-    public List<FilterObjectId> getLanguages() {
+    public static List<FilterObjectId> getLanguages() {
         List<FilterObjectId> languages = new ArrayList<>();
         languages.add(new FilterObjectId("en", "English"));
         languages.add(new FilterObjectId("es", "Spanish"));

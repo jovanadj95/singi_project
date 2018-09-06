@@ -30,7 +30,7 @@ public class RadioButtonWidget extends FilterBaseWidget {
         LinearLayout content = findViewById(R.id.content);
         RadioGroup radioGroup = new RadioGroup(content.getContext());
         radioGroup.setOrientation(VERTICAL);
-        List<FilterObjectId> languages = new FilterLists().getLanguages();
+        List<FilterObjectId> languages = FilterLists.getLanguages();
 
         for (int i = 0; i < languages.size(); i++) {
             RadioButton radioButton = new RadioButton(content.getContext());

@@ -20,6 +20,7 @@ import com.singidunum.moviesinfoapp.model.api.movie.Movie;
 import com.singidunum.moviesinfoapp.model.api.pictures.Backdrop;
 import com.singidunum.moviesinfoapp.model.api.pictures.MoviePicturesResult;
 import com.singidunum.moviesinfoapp.service.ApiRetrofit;
+import com.singidunum.moviesinfoapp.service.FilterLists;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
     private List<Cast> cast = new ArrayList<>();
     private List<Backdrop> pictures = new ArrayList<>();
+    private String genres;
     private RecyclerView rvCast;
     private RecyclerView rvPictures;
 
@@ -47,6 +49,28 @@ public class MovieDetailsActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.movie_title_details)).setText(movie.getTitle());
         ((TextView) findViewById(R.id.imdb_vote_average)).setText(String.valueOf(movie.getVoteAverage()));
         ((TextView) findViewById(R.id.movie_plot)).setText(movie.getOverview());
+
+        String date = movie.getReleaseDate();
+        ((TextView) findViewById(R.id.movie_release_details)).setText(new StringBuilder()
+                .append(date.substring(date.lastIndexOf("-") + 1))
+                .append(".")
+                .append(date.substring(date.indexOf("-") + 1, date.lastIndexOf("-")))
+                .append(".")
+                .append(date.substring(0, date.indexOf("-")))
+                .append(".").toString());
+
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < movie.getGenreIds().size(); i++) {
+            for (int j = 0; j < FilterLists.getGenres().size(); j++) {
+                if (Integer.valueOf(FilterLists.getGenres().get(j).getId()).equals(movie.getGenreIds().get(i))) {
+                    if (builder.length() >= 1) {
+                        builder.append(", ");
+                    }
+                    builder.append(FilterLists.getGenres().get(j).getDisplayName());
+                }
+            }
+        }
+        ((TextView) findViewById(R.id.movie_genres_details)).setText(builder.toString());
 
         MoviesApi moviesApi = createRetrofitApi();
 

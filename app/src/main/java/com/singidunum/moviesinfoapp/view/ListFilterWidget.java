@@ -82,9 +82,9 @@ public class ListFilterWidget extends FilterBaseWidget {
     private List<FilterObjectId> getList(String title) {
         switch (title) {
             case "Genres":
-                return new FilterLists().getGenres();
+                return FilterLists.getGenres();
             case "Production houses":
-                return new FilterLists().getProductions();
+                return FilterLists.getProductions();
             default:
                 return new ArrayList<>();
         }
