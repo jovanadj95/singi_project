@@ -17,7 +17,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:text="@string/filtergroup" />
+            android:text="@string/filter_group" />
 
         <ImageView
             android:id="@+id/expand_button"

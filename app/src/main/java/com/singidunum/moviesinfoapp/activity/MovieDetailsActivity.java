@@ -1,8 +1,8 @@
 package com.singidunum.moviesinfoapp.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.singidunum.moviesinfoapp.BuildConfig;
+import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.adapter.CastAdapter;
 import com.singidunum.moviesinfoapp.adapter.PictureAdapter;
-import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.api.MoviesApi;
 import com.singidunum.moviesinfoapp.model.api.credits.Cast;
 import com.singidunum.moviesinfoapp.model.api.credits.MovieCreditsResult;
@@ -44,7 +44,9 @@ public class MovieDetailsActivity extends AppCompatActivity {
         String movieJson = intent.getStringExtra("movie");
         Movie movie = new Gson().fromJson(movieJson, Movie.class);
 
+        ((TextView) findViewById(R.id.movie_title_details)).setText(movie.getTitle());
         ((TextView) findViewById(R.id.imdb_vote_average)).setText(String.valueOf(movie.getVoteAverage()));
+        ((TextView) findViewById(R.id.movie_plot)).setText(movie.getOverview());
 
         MoviesApi moviesApi = createRetrofitApi();
 
