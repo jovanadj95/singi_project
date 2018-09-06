@@ -35,9 +35,13 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.CastViewHolder
     @Override
     public void onBindViewHolder(@NonNull CastViewHolder holder, int position) {
         Cast cast = castList.get(position);
-        Picasso.get()
-                .load(BuildConfig.API_IMG_BASE + cast.getProfilePath())
-                .into(holder.actorPicture);
+        if (cast.getProfilePath() != null) {
+            Picasso.get()
+                    .load(BuildConfig.API_IMG_BASE + cast.getProfilePath())
+                    .into(holder.actorPicture);
+        } else {
+            holder.actorPicture.setImageResource(R.drawable.no_image_available);
+        }
         holder.actorName.setText(cast.getName());
         holder.character.setText(cast.getCharacter());
     }

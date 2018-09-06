@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/movie"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="150dp"
     android:orientation="horizontal"
     android:padding="10dp">
 
     <ImageView
         android:id="@+id/poster"
         android:layout_width="100dp"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:src="@drawable/deadpool2" />
 
     <LinearLayout
@@ -29,13 +29,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
             android:background="@android:color/darker_gray" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
             android:orientation="horizontal">
 
             <TextView
@@ -64,14 +64,16 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
             android:background="@android:color/darker_gray" />
 
         <TextView
             android:id="@+id/overview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:maxLines="4"
             android:text="@string/deadpool_plot" />
     </LinearLayout>
 </LinearLayout>

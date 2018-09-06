@@ -26,7 +26,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private final int PROGRESS_HOLDER = 2;
     private final int EMPTY_VIEW = 3;
 
-
     private List<Movie> moviesList;
     private int page = 1;
     private int progress = 1;
@@ -42,7 +41,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         this.progress = progress;
         notifyDataSetChanged();
     }
-
 
     @NonNull
     @Override
@@ -84,7 +82,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             return;
         }
         pagination();
-
     }
 
     private void pagination() {
@@ -112,7 +109,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             overview = itemView.findViewById(R.id.overview);
             rating = itemView.findViewById(R.id.rating);
         }
-
     }
 
     public class ProgressViewHolder extends RecyclerView.ViewHolder {
