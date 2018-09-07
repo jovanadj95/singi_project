@@ -1,29 +1,19 @@
 package com.singidunum.moviesinfoapp.model.filter;
 
-import java.util.HashMap;
-
 public class FilterObject {
-    private HashMap<String, String> options;
-    private String filterName;
 
-    public FilterObject(HashMap<String, String> options, String filterName) {
-        this.options = options;
-        this.filterName = filterName;
+    private String id, displayName;
+
+    public FilterObject(String id, String displayName) {
+        this.id = id;
+        this.displayName = displayName;
     }
 
-    public HashMap<String, String> getOptions() {
-        return options;
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public void setOptions(HashMap<String, String> options) {
-        this.options = options;
-    }
-
-    public String getFilterName() {
-        return filterName;
-    }
-
-    public void setFilterName(String filterName) {
-        this.filterName = filterName;
+    public String getId() {
+        return id;
     }
 }

@@ -1,6 +1,5 @@
 package com.singidunum.moviesinfoapp.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -41,8 +40,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
 
-        Intent intent = getIntent();
-        String movieJson = intent.getStringExtra("movie");
+        String movieJson = getIntent().getStringExtra("movie");
         Movie movie = new Gson().fromJson(movieJson, Movie.class);
 
         ((TextView) findViewById(R.id.movie_title_details)).setText(movie.getTitle());
@@ -71,32 +69,23 @@ public class MovieDetailsActivity extends AppCompatActivity {
         }
         ((TextView) findViewById(R.id.movie_genres_details)).setText(builder.toString());
 
-        MoviesApi moviesApi = createRetrofitApi();
-
         rvCast = findViewById(R.id.actors_list);
         rvCast.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false));
-        getCreditsCall(moviesApi, movie.getId());
+        getCreditsCall(ApiRetrofit.getApiRetrofit(), movie.getId());
 
         rvPictures = findViewById(R.id.pictures_list);
         rvPictures.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false));
-        getPicturesCall(moviesApi, movie.getId());
-    }
-
-    private MoviesApi createRetrofitApi() {
-        ApiRetrofit apiRetrofit = new ApiRetrofit();
-        return apiRetrofit.getApiRetrofit();
+        getPicturesCall(ApiRetrofit.getApiRetrofit(), movie.getId());
     }
 
     private void getPicturesCall(MoviesApi moviesApi, Integer id) {
-        Call<MoviePicturesResult> call = moviesApi.getPictures(id, BuildConfig.API_KEY);
-        call.enqueue(new Callback<MoviePicturesResult>() {
+        moviesApi.getPictures(id, BuildConfig.API_KEY).enqueue(new Callback<MoviePicturesResult>() {
             @Override
             public void onResponse(Call<MoviePicturesResult> call, Response<MoviePicturesResult> response) {
                 if (response.body() != null) {
                     MoviePicturesResult result = response.body();
                     if (result != null) {
-                        pictures = result.getBackdrops();
-                        rvPictures.setAdapter(new PictureAdapter(MovieDetailsActivity.this, pictures));
+                        rvPictures.setAdapter(new PictureAdapter(MovieDetailsActivity.this, result.getBackdrops()));
                     }
                 }
             }
@@ -108,15 +97,13 @@ public class MovieDetailsActivity extends AppCompatActivity {
     }
 
     private void getCreditsCall(MoviesApi moviesApi, Integer id) {
-        Call<MovieCreditsResult> call = moviesApi.getCredits(id, BuildConfig.API_KEY);
-        call.enqueue(new Callback<MovieCreditsResult>() {
+        moviesApi.getCredits(id, BuildConfig.API_KEY).enqueue(new Callback<MovieCreditsResult>() {
             @Override
             public void onResponse(Call<MovieCreditsResult> call, Response<MovieCreditsResult> response) {
                 if (response.body() != null) {
                     MovieCreditsResult result = response.body();
                     if (result != null) {
-                        cast = result.getCast();
-                        rvCast.setAdapter(new CastAdapter(MovieDetailsActivity.this, cast));
+                        rvCast.setAdapter(new CastAdapter(MovieDetailsActivity.this, result.getCast()));
                     }
                 }
             }

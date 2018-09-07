@@ -10,11 +10,10 @@ import android.widget.RadioGroup;
 
 import com.google.gson.Gson;
 import com.singidunum.moviesinfoapp.R;
-import com.singidunum.moviesinfoapp.model.filter.FilterObjectId;
+import com.singidunum.moviesinfoapp.model.filter.FilterObject;
 import com.singidunum.moviesinfoapp.service.FilterLists;
 import com.singidunum.moviesinfoapp.service.SharedStorageData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RadioButtonWidget extends FilterBaseWidget {
@@ -30,7 +29,7 @@ public class RadioButtonWidget extends FilterBaseWidget {
         LinearLayout content = findViewById(R.id.content);
         RadioGroup radioGroup = new RadioGroup(content.getContext());
         radioGroup.setOrientation(VERTICAL);
-        List<FilterObjectId> languages = FilterLists.getLanguages();
+        List<FilterObject> languages = FilterLists.getLanguages();
 
         for (int i = 0; i < languages.size(); i++) {
             RadioButton radioButton = new RadioButton(content.getContext());
@@ -40,7 +39,7 @@ public class RadioButtonWidget extends FilterBaseWidget {
             radioGroup.addView(radioButton);
             radioButton.setButtonDrawable(R.drawable.radio_button_selector);
 
-            FilterObjectId language = new Gson().fromJson(SharedStorageData.getLanguages(getContext()), FilterObjectId.class);
+            FilterObject language = new Gson().fromJson(SharedStorageData.getLanguages(getContext()), FilterObject.class);
             String selected = language == null ? "English" : language.getDisplayName();
             if (!TextUtils.isEmpty(selected) && languages.get(i).getDisplayName().equals(selected)) {
                 radioButton.setChecked(true);

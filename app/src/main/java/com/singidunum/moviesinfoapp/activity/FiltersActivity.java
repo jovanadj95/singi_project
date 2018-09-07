@@ -1,8 +1,8 @@
 package com.singidunum.moviesinfoapp.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.singidunum.moviesinfoapp.R;
-import com.singidunum.moviesinfoapp.model.filter.FilterObjectId;
+import com.singidunum.moviesinfoapp.model.filter.FilterObject;
 import com.singidunum.moviesinfoapp.service.SharedStorageData;
 
 import java.util.ArrayList;
@@ -90,9 +90,13 @@ public class FiltersActivity extends AppCompatActivity {
             if (child != null && child.findViewById(R.id.date_picker) != null) {
                 DatePicker datePicker = child.findViewById(R.id.date_picker);
                 if (from) {
-                    datePicker.updateDate(Calendar.getInstance().get(Calendar.YEAR) - 5, Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+                    datePicker.updateDate(Calendar.getInstance().get(Calendar.YEAR) - 5,
+                            Calendar.getInstance().get(Calendar.MONTH),
+                            Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
                 } else {
-                    datePicker.updateDate(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+                    datePicker.updateDate(Calendar.getInstance().get(Calendar.YEAR),
+                            Calendar.getInstance().get(Calendar.MONTH),
+                            Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
                 }
             }
         }
@@ -136,13 +140,13 @@ public class FiltersActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
-    private FilterObjectId saveRadioButton(ViewGroup content) {
+    private FilterObject saveRadioButton(ViewGroup content) {
         ViewGroup radioGroup = (ViewGroup) content.getChildAt(0);
         for (int i = 0; i < radioGroup.getChildCount(); i++) {
             View child = radioGroup.getChildAt(i);
             if (child != null && child instanceof RadioButton) {
                 if (((RadioButton) child).isChecked()) {
-                    return new FilterObjectId(child.getTag().toString(), ((RadioButton) child).getText().toString());
+                    return new FilterObject(child.getTag().toString(), ((RadioButton) child).getText().toString());
                 }
             }
         }
@@ -165,13 +169,13 @@ public class FiltersActivity extends AppCompatActivity {
         return date;
     }
 
-    private List<FilterObjectId> saveCheckboxes(ViewGroup content) {
-        List<FilterObjectId> selected = new ArrayList<>();
+    private List<FilterObject> saveCheckboxes(ViewGroup content) {
+        List<FilterObject> selected = new ArrayList<>();
         for (int i = 0; i < content.getChildCount(); i++) {
             View child = content.getChildAt(i);
             if (child != null && child instanceof CheckBox) {
                 if (((CheckBox) child).isChecked()) {
-                    selected.add(new FilterObjectId(child.getTag().toString(), ((CheckBox) child).getText().toString()));
+                    selected.add(new FilterObject(child.getTag().toString(), ((CheckBox) child).getText().toString()));
                 }
             }
         }

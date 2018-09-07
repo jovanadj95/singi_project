@@ -1,8 +1,8 @@
 package com.singidunum.moviesinfoapp.api;
 
-import com.singidunum.moviesinfoapp.model.api.pictures.MoviePicturesResult;
 import com.singidunum.moviesinfoapp.model.api.credits.MovieCreditsResult;
 import com.singidunum.moviesinfoapp.model.api.movie.MovieResult;
+import com.singidunum.moviesinfoapp.model.api.pictures.MoviePicturesResult;
 
 import java.util.ArrayList;
 

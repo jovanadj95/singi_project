@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiRetrofit {
 
-    public MoviesApi getApiRetrofit() {
+    public static MoviesApi getApiRetrofit() {
         Retrofit retrofit = new retrofit2.Retrofit.Builder()
                 .baseUrl(BuildConfig.API_URL)
                 .addConverterFactory(GsonConverterFactory.create())

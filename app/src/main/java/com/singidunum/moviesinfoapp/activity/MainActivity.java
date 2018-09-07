@@ -12,10 +12,9 @@ import com.google.gson.reflect.TypeToken;
 import com.singidunum.moviesinfoapp.BuildConfig;
 import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.adapter.MoviesAdapter;
-import com.singidunum.moviesinfoapp.api.MoviesApi;
 import com.singidunum.moviesinfoapp.model.api.movie.Movie;
 import com.singidunum.moviesinfoapp.model.api.movie.MovieResult;
-import com.singidunum.moviesinfoapp.model.filter.FilterObjectId;
+import com.singidunum.moviesinfoapp.model.filter.FilterObject;
 import com.singidunum.moviesinfoapp.service.ApiRetrofit;
 import com.singidunum.moviesinfoapp.service.SharedStorageData;
 
@@ -53,21 +52,14 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Nav
     }
 
     private void createRetrofitGetMoviesCall(int page) {
-        ApiRetrofit apiRetrofit = new ApiRetrofit();
-        MoviesApi moviesApi = apiRetrofit.getApiRetrofit();
-
-        ArrayList<String> productionHouses = getId("Production houses");
-        ArrayList<String> genres = getId("Genres");
-        String language = getLanguage();
-
-        Call<MovieResult> call = moviesApi.getMovies(BuildConfig.API_KEY, "en-US",
+        Call<MovieResult> call = ApiRetrofit.getApiRetrofit().getMovies(BuildConfig.API_KEY, "en-US",
                 "popularity.desc", false, page, SharedStorageData.getDateFrom(this),
-                SharedStorageData.getDateTo(this), productionHouses, genres, language);
+                SharedStorageData.getDateTo(this), getId("Production houses"), getId("Genres"), getLanguage());
         getMovies(call);
     }
 
     private String getLanguage() {
-        FilterObjectId language = new Gson().fromJson(SharedStorageData.getLanguages(this), FilterObjectId.class);
+        FilterObject language = new Gson().fromJson(SharedStorageData.getLanguages(this), FilterObject.class);
         return language == null ? "en" : language.getId();
     }
 
@@ -82,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Nav
                 break;
         }
         if (data != null && !data.equals("[]")) {
-            List<FilterObjectId> list = new Gson().fromJson(data, new TypeToken<ArrayList<FilterObjectId>>() {
+            List<FilterObject> list = new Gson().fromJson(data, new TypeToken<ArrayList<FilterObject>>() {
             }.getType());
 
             ArrayList<String> ids = new ArrayList<>();

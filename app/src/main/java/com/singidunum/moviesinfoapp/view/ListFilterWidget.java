@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.singidunum.moviesinfoapp.R;
-import com.singidunum.moviesinfoapp.model.filter.FilterObjectId;
+import com.singidunum.moviesinfoapp.model.filter.FilterObject;
 import com.singidunum.moviesinfoapp.service.FilterLists;
 import com.singidunum.moviesinfoapp.service.SharedStorageData;
 
@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListFilterWidget extends FilterBaseWidget {
-    private List<FilterObjectId> list = new ArrayList<>();
-    private List<FilterObjectId> selected = new ArrayList<>();
+    private List<FilterObject> list = new ArrayList<>();
+    private List<FilterObject> selected = new ArrayList<>();
 
     public ListFilterWidget(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -61,7 +61,7 @@ public class ListFilterWidget extends FilterBaseWidget {
         }
     }
 
-    private List<FilterObjectId> getSelected(String title) {
+    private List<FilterObject> getSelected(String title) {
         String data = null;
         switch (title) {
             case "Genres":
@@ -74,12 +74,12 @@ public class ListFilterWidget extends FilterBaseWidget {
         if (data == null) {
             return new ArrayList<>();
         } else {
-            return new Gson().fromJson(data, new TypeToken<ArrayList<FilterObjectId>>() {
+            return new Gson().fromJson(data, new TypeToken<ArrayList<FilterObject>>() {
             }.getType());
         }
     }
 
-    private List<FilterObjectId> getList(String title) {
+    private List<FilterObject> getList(String title) {
         switch (title) {
             case "Genres":
                 return FilterLists.getGenres();
@@ -90,7 +90,7 @@ public class ListFilterWidget extends FilterBaseWidget {
         }
     }
 
-    public void setList(List<FilterObjectId> list) {
+    public void setList(List<FilterObject> list) {
         this.list.clear();
         this.list = list;
     }
