@@ -37,7 +37,7 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.CastViewHolder
         Cast cast = castList.get(position);
         if (cast.getProfilePath() != null) {
             Picasso.get()
-                    .load(BuildConfig.API_IMG_BASE + cast.getProfilePath())
+                    .load(BuildConfig.API_IMG_BASE + "w185" + cast.getProfilePath())
                     .into(holder.actorPicture);
         } else {
             holder.actorPicture.setImageResource(R.drawable.no_image_available);

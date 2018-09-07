@@ -65,7 +65,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             final Context context = movieViewHolder.title.getContext();
             final Movie movie = moviesList.get(position);
             Picasso.get()
-                    .load(BuildConfig.API_IMG_BASE + movie.getPosterPath())
+                    .load(BuildConfig.API_IMG_BASE + "w185" + movie.getPosterPath())
                     .into(movieViewHolder.poster);
             movieViewHolder.title.setText(movie.getTitle() + " (" + movie.getReleaseDate().substring(0, movie.getReleaseDate().indexOf("-")) + ")");
             movieViewHolder.overview.setText(movie.getOverview());
