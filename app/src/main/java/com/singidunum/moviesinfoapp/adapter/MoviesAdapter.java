@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -68,10 +67,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             Picasso.get()
                     .load(BuildConfig.API_IMG_BASE + movie.getPosterPath())
                     .into(movieViewHolder.poster);
-            movieViewHolder.title.setText(movie.getTitle());
+            movieViewHolder.title.setText(movie.getTitle() + " (" + movie.getReleaseDate().substring(0, movie.getReleaseDate().indexOf("-")) + ")");
             movieViewHolder.overview.setText(movie.getOverview());
             movieViewHolder.rating.setText(String.valueOf(movie.getVoteAverage()));
-            movieViewHolder.layout.setOnClickListener(new View.OnClickListener() {
+            movieViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, MovieDetailsActivity.class);
@@ -95,7 +94,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     public class MovieViewHolder extends RecyclerView.ViewHolder {
 
-        private LinearLayout layout;
         private ImageView poster;
         private TextView title;
         private TextView overview;
@@ -103,7 +101,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         MovieViewHolder(View itemView) {
             super(itemView);
-            layout = itemView.findViewById(R.id.movie);
             poster = itemView.findViewById(R.id.poster);
             title = itemView.findViewById(R.id.movie_title);
             overview = itemView.findViewById(R.id.overview);

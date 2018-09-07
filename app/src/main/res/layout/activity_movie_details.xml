@@ -19,6 +19,10 @@
                 android:id="@+id/movie_title_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/imdb_vote_average"
+                android:layout_toStartOf="@+id/imdb_vote_average"
                 android:text="@string/deadpool_2"
                 android:textSize="24sp" />
 
@@ -38,7 +42,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:layout_marginStart="5dp"
                 android:src="@android:drawable/star_off" />
@@ -47,7 +50,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
             android:background="@color/blue_view" />
 
@@ -60,8 +63,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
             android:background="@color/blue_view" />
 
         <LinearLayout
@@ -112,8 +115,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
             android:background="@color/blue_view" />
 
         <TextView
@@ -133,7 +136,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:background="@color/blue_view" />
 
         <android.support.v7.widget.RecyclerView
@@ -153,7 +156,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:background="@color/blue_view" />
 
         <android.support.v7.widget.RecyclerView

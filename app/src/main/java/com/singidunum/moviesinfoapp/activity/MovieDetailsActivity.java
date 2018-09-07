@@ -33,7 +33,6 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
     private List<Cast> cast = new ArrayList<>();
     private List<Backdrop> pictures = new ArrayList<>();
-    private String genres;
     private RecyclerView rvCast;
     private RecyclerView rvPictures;
 

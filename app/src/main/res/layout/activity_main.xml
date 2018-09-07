@@ -19,7 +19,7 @@
             android:layout_toLeftOf="@+id/change_filters"
             android:layout_toStartOf="@+id/change_filters"
             android:text="@string/list_of_movies"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/change_filters"
