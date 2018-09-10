@@ -30,8 +30,6 @@ import retrofit2.Response;
 
 public class MovieDetailsActivity extends AppCompatActivity {
 
-    private List<Cast> cast = new ArrayList<>();
-    private List<Backdrop> pictures = new ArrayList<>();
     private RecyclerView rvCast;
     private RecyclerView rvPictures;
 

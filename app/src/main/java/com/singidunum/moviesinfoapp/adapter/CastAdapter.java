@@ -1,6 +1,7 @@
 package com.singidunum.moviesinfoapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.singidunum.moviesinfoapp.BuildConfig;
 import com.singidunum.moviesinfoapp.R;
+import com.singidunum.moviesinfoapp.activity.ActorDetailsActivity;
 import com.singidunum.moviesinfoapp.model.api.credits.Cast;
 import com.squareup.picasso.Picasso;
 
@@ -34,11 +36,20 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.CastViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CastViewHolder holder, int position) {
-        Cast cast = castList.get(position);
+        final Cast cast = castList.get(position);
         if (cast.getProfilePath() != null) {
             Picasso.get()
                     .load(BuildConfig.API_IMG_BASE + "w185" + cast.getProfilePath())
                     .into(holder.actorPicture);
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, ActorDetailsActivity.class);
+                    intent.putExtra("actorId", cast.getId());
+                    context.startActivity(intent);
+                }
+            });
         } else {
             holder.actorPicture.setImageResource(R.drawable.no_image_available);
         }

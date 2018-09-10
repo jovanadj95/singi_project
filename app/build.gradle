@@ -10,9 +10,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField 'String', 'API_URL', '"http://api.themoviedb.org/3/"'
-        buildConfigField 'String', 'API_KEY', '"f7c765a60e4d8a73f2e3686371956f8e"'
-        buildConfigField 'String', 'API_IMG_BASE', '"http://image.tmdb.org/t/p/"'
+        buildConfigField 'String', 'API_URL', MoviesInfo_ApiUrl
+        buildConfigField 'String', 'API_KEY', MoviesInfo_ApiKey
+        buildConfigField 'String', 'API_IMG_BASE', MoviesInfo_ApiImageBase
     }
     buildTypes {
         release {
@@ -27,7 +27,6 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:support-vector-drawable:27.1.1'
     implementation 'com.android.support:exifinterface:27.1.1'
-    testImplementation 'junit:junit:4.12'
 
     // RecyclerView
     implementation 'com.android.support:recyclerview-v7:27.1.1'
@@ -37,5 +36,5 @@ dependencies {
 
     // ApiRetrofit
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 }

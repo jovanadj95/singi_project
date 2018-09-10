@@ -1,5 +1,6 @@
 package com.singidunum.moviesinfoapp.api;
 
+import com.singidunum.moviesinfoapp.model.api.Actor;
 import com.singidunum.moviesinfoapp.model.api.credits.MovieCreditsResult;
 import com.singidunum.moviesinfoapp.model.api.movie.MovieResult;
 import com.singidunum.moviesinfoapp.model.api.pictures.MoviePicturesResult;
@@ -55,6 +56,16 @@ public interface MoviesApi {
     @GET("movie/{movie_id}/images")
     Call<MoviePicturesResult> getPictures(
             @Path("movie_id") int movieId,
+            @Query("api_key") String apiKey
+    );
+
+    // https://api.themoviedb.org/3/person/
+    // 10859?
+    // api_key=f7c765a60e4d8a73f2e3686371956f8e
+
+    @GET("person/{actorId}")
+    Call<Actor> getActor(
+            @Path("actorId") int id,
             @Query("api_key") String apiKey
     );
 
