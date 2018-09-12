@@ -12,8 +12,8 @@ import com.google.gson.reflect.TypeToken;
 import com.singidunum.moviesinfoapp.BuildConfig;
 import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.adapter.MoviesAdapter;
-import com.singidunum.moviesinfoapp.model.api.movie.Movie;
-import com.singidunum.moviesinfoapp.model.api.movie.MovieResult;
+import com.singidunum.moviesinfoapp.model.api.movies.Movies;
+import com.singidunum.moviesinfoapp.model.api.movies.MovieResult;
 import com.singidunum.moviesinfoapp.model.filter.FilterObject;
 import com.singidunum.moviesinfoapp.service.ApiRetrofit;
 import com.singidunum.moviesinfoapp.service.SharedStorageData;
@@ -27,7 +27,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements MoviesAdapter.NavigationListener {
 
-    private List<Movie> moviesList;
+    private List<Movies> moviesList;
     private MoviesAdapter adapter;
     private int page;
 

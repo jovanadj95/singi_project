@@ -1,8 +1,10 @@
 package com.singidunum.moviesinfoapp.api;
 
-import com.singidunum.moviesinfoapp.model.api.Actor;
+import com.singidunum.moviesinfoapp.model.api.actors.Actor;
+import com.singidunum.moviesinfoapp.model.api.actors.ActorFilmography;
 import com.singidunum.moviesinfoapp.model.api.credits.MovieCreditsResult;
-import com.singidunum.moviesinfoapp.model.api.movie.MovieResult;
+import com.singidunum.moviesinfoapp.model.api.movie.Movie;
+import com.singidunum.moviesinfoapp.model.api.movies.MovieResult;
 import com.singidunum.moviesinfoapp.model.api.pictures.MoviePicturesResult;
 
 import java.util.ArrayList;
@@ -63,25 +65,32 @@ public interface MoviesApi {
     // 10859?
     // api_key=f7c765a60e4d8a73f2e3686371956f8e
 
-    @GET("person/{actorId}")
+    @GET("person/{actor_Id}")
     Call<Actor> getActor(
-            @Path("actorId") int id,
+            @Path("actor_Id") int id,
             @Query("api_key") String apiKey
     );
 
-    // https://api.themoviedb.org/3/search/movie?
-    // api_key=f7c765a60e4d8a73f2e3686371956f8e&
-    // language=en-US&
-    // query=deadpool&
-    // page=1&
-    // include_adult=false
-
-    /*@GET("search/movie")
-    Call<MovieSearchResult> findMovie(
+    // https://api.themoviedb.org/3/person/
+    // 10859/movie_credits?
+    // api_key=f7c765a60e4d8a73f2e3686371956f8e
+    // &language=en-US
+    @GET("person/{actorId}/movie_credits")
+    Call<ActorFilmography> getActorFilmography(
+            @Path("actorId") int id,
             @Query("api_key") String apiKey,
-            @Query("language") String language,
-            @Query("query") String query,
-            @Query("include_adult") Boolean includeAdult,
-            @Query("page") int page
-    );*/
+            @Query("language") String language
+    );
+
+    // https://api.themoviedb.org/3/movie/
+    // 383498?
+    // api_key=f7c765a60e4d8a73f2e3686371956f8e&
+    // language=en-US
+
+    @GET("movie/{movie_id}")
+    Call<Movie> getMovie(
+            @Path("movie_id") int movieId,
+            @Query("api_key") String apiKey,
+            @Query("language") String language
+    );
 }

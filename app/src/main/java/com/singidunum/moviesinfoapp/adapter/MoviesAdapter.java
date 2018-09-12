@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 import com.singidunum.moviesinfoapp.BuildConfig;
 import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.activity.MovieDetailsActivity;
-import com.singidunum.moviesinfoapp.model.api.movie.Movie;
+import com.singidunum.moviesinfoapp.model.api.movies.Movies;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -24,18 +24,19 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private final int MOVIE_HOLDER = 1;
     private final int PROGRESS_HOLDER = 2;
     private final int EMPTY_VIEW = 3;
+    public static final String TAG = "MoviesAdapter";
 
-    private List<Movie> moviesList;
+    private List<Movies> moviesList;
     private int page = 1;
     private int progress = 1;
     private NavigationListener navigationListener;
 
-    public MoviesAdapter(NavigationListener navigationListener, List<Movie> moviesList) {
+    public MoviesAdapter(NavigationListener navigationListener, List<Movies> moviesList) {
         this.moviesList = moviesList;
         this.navigationListener = navigationListener;
     }
 
-    public void updateData(List<Movie> moviesList, int progress) {
+    public void updateData(List<Movies> moviesList, int progress) {
         this.moviesList.addAll(moviesList);
         this.progress = progress;
         notifyDataSetChanged();
@@ -63,18 +64,19 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if (position < moviesList.size()) {
             MovieViewHolder movieViewHolder = (MovieViewHolder) holder;
             final Context context = movieViewHolder.title.getContext();
-            final Movie movie = moviesList.get(position);
+            final Movies movies = moviesList.get(position);
             Picasso.get()
-                    .load(BuildConfig.API_IMG_BASE + "w185" + movie.getPosterPath())
+                    .load(BuildConfig.API_IMG_BASE + "w185" + movies.getPosterPath())
                     .into(movieViewHolder.poster);
-            movieViewHolder.title.setText(movie.getTitle() + " (" + movie.getReleaseDate().substring(0, movie.getReleaseDate().indexOf("-")) + ")");
-            movieViewHolder.overview.setText(movie.getOverview());
-            movieViewHolder.rating.setText(String.valueOf(movie.getVoteAverage()));
+            movieViewHolder.title.setText(movies.getTitle() + " (" + movies.getReleaseDate().substring(0, movies.getReleaseDate().indexOf("-")) + ")");
+            movieViewHolder.overview.setText(movies.getOverview());
+            movieViewHolder.rating.setText(String.valueOf(movies.getVoteAverage()));
             movieViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, MovieDetailsActivity.class);
-                    intent.putExtra("movie", new Gson().toJson(movie));
+                    intent.putExtra("source", TAG);
+                    intent.putExtra("movie", new Gson().toJson(movies));
                     context.startActivity(intent);
                 }
             });

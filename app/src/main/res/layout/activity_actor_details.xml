@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     tools:context=".activity.ActorDetailsActivity">
 
     <LinearLayout
@@ -28,6 +29,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/details_actor_death"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/details_actor_place_of_birth"
@@ -72,7 +79,7 @@
             android:layout_marginTop="5dp"
             android:background="@color/blue_view" />
 
-        <TextView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/details_actor_filmography"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

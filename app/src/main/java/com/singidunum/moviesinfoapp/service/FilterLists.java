@@ -24,7 +24,7 @@ public class FilterLists {
         genres.add(new FilterObject("9648", "Mystery"));
         genres.add(new FilterObject("10749", "Romance"));
         genres.add(new FilterObject("878", "Science Fiction"));
-        genres.add(new FilterObject("10770", "TV Movie"));
+        genres.add(new FilterObject("10770", "TV Movies"));
         genres.add(new FilterObject("53", "Thriller"));
         genres.add(new FilterObject("10752", "War"));
         genres.add(new FilterObject("37", "Western"));

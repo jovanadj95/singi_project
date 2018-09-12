@@ -1,4 +1,4 @@
-package com.singidunum.moviesinfoapp.model.api.movie;
+package com.singidunum.moviesinfoapp.model.api.movies;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -18,7 +18,7 @@ public class MovieResult {
     private Integer totalPages;
     @SerializedName("results")
     @Expose
-    private List<Movie> movies = null;
+    private List<Movies> movies = null;
 
     public Integer getPage() {
         return page;
@@ -44,11 +44,11 @@ public class MovieResult {
         this.totalPages = totalPages;
     }
 
-    public List<Movie> getMovies() {
+    public List<Movies> getMovies() {
         return movies;
     }
 
-    public void setMovies(List<Movie> movies) {
+    public void setMovies(List<Movies> movies) {
         this.movies = movies;
     }
 

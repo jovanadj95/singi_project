@@ -11,18 +11,16 @@ import com.google.gson.Gson;
 import com.singidunum.moviesinfoapp.BuildConfig;
 import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.adapter.CastAdapter;
+import com.singidunum.moviesinfoapp.adapter.FilmographyAdapter;
+import com.singidunum.moviesinfoapp.adapter.MoviesAdapter;
 import com.singidunum.moviesinfoapp.adapter.PictureAdapter;
 import com.singidunum.moviesinfoapp.api.MoviesApi;
-import com.singidunum.moviesinfoapp.model.api.credits.Cast;
 import com.singidunum.moviesinfoapp.model.api.credits.MovieCreditsResult;
 import com.singidunum.moviesinfoapp.model.api.movie.Movie;
-import com.singidunum.moviesinfoapp.model.api.pictures.Backdrop;
+import com.singidunum.moviesinfoapp.model.api.movies.Movies;
 import com.singidunum.moviesinfoapp.model.api.pictures.MoviePicturesResult;
 import com.singidunum.moviesinfoapp.service.ApiRetrofit;
 import com.singidunum.moviesinfoapp.service.FilterLists;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,14 +36,69 @@ public class MovieDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
 
-        String movieJson = getIntent().getStringExtra("movie");
-        Movie movie = new Gson().fromJson(movieJson, Movie.class);
+        int movieId = 0;
 
-        ((TextView) findViewById(R.id.movie_title_details)).setText(movie.getTitle());
-        ((TextView) findViewById(R.id.imdb_vote_average)).setText(String.valueOf(movie.getVoteAverage()));
-        ((TextView) findViewById(R.id.movie_plot)).setText(movie.getOverview());
+        if (savedInstanceState == null) {
+            Bundle bundle = getIntent().getExtras();
+            if (bundle != null && bundle.containsKey("source")) {
+                if (MoviesAdapter.TAG.equals(bundle.getString("source"))) {
+                    String movieJson = getIntent().getStringExtra("movie");
+                    Movies movie = new Gson().fromJson(movieJson, Movies.class);
 
-        String date = movie.getReleaseDate();
+                    movieId = movie.getId();
+
+                    StringBuilder genreBuilder = new StringBuilder();
+                    for (int i = 0; i < movie.getGenreIds().size(); i++) {
+                        for (int j = 0; j < FilterLists.getGenres().size(); j++) {
+                            if (Integer.valueOf(FilterLists.getGenres().get(j).getId()).equals(movie.getGenreIds().get(i))) {
+                                if (genreBuilder.length() >= 1) {
+                                    genreBuilder.append(", ");
+                                }
+                                genreBuilder.append(FilterLists.getGenres().get(j).getDisplayName());
+                            }
+                        }
+                    }
+
+                    setDetails(movie.getTitle(),
+                            String.valueOf(movie.getVoteAverage()),
+                            movie.getOverview(),
+                            movie.getReleaseDate(),
+                            genreBuilder.toString());
+                } else if (FilmographyAdapter.TAG.equals(bundle.getString("source"))) {
+                    String movieJson = getIntent().getStringExtra("movie");
+                    Movie movie = new Gson().fromJson(movieJson, Movie.class);
+
+                    movieId = movie.getId();
+
+                    StringBuilder genreBuilder = new StringBuilder();
+                    for (int i = 0; i < movie.getGenres().size(); i++) {
+                        if (genreBuilder.length() >= 1) {
+                            genreBuilder.append(", ");
+                        }
+                        genreBuilder.append(movie.getGenres().get(i).getName());
+                    }
+                    setDetails(movie.getTitle(),
+                            String.valueOf(movie.getVoteAverage()),
+                            movie.getOverview(),
+                            movie.getReleaseDate(),
+                            genreBuilder.toString());
+                }
+
+                rvCast = findViewById(R.id.actors_list);
+                rvCast.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false));
+                getCreditsCall(ApiRetrofit.getApiRetrofit(), movieId);
+
+                rvPictures = findViewById(R.id.pictures_list);
+                rvPictures.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false));
+                getPicturesCall(ApiRetrofit.getApiRetrofit(), movieId);
+            }
+        }
+    }
+
+    private void setDetails(String title, String voteAverage, String overview, String date, String genres) {
+        ((TextView) findViewById(R.id.movie_title_details)).setText(title);
+        ((TextView) findViewById(R.id.imdb_vote_average)).setText(voteAverage);
+        ((TextView) findViewById(R.id.movie_plot)).setText(overview);
         ((TextView) findViewById(R.id.movie_release_details)).setText(new StringBuilder()
                 .append(date.substring(date.lastIndexOf("-") + 1))
                 .append(".")
@@ -53,27 +106,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 .append(".")
                 .append(date.substring(0, date.indexOf("-")))
                 .append(".").toString());
-
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < movie.getGenreIds().size(); i++) {
-            for (int j = 0; j < FilterLists.getGenres().size(); j++) {
-                if (Integer.valueOf(FilterLists.getGenres().get(j).getId()).equals(movie.getGenreIds().get(i))) {
-                    if (builder.length() >= 1) {
-                        builder.append(", ");
-                    }
-                    builder.append(FilterLists.getGenres().get(j).getDisplayName());
-                }
-            }
-        }
-        ((TextView) findViewById(R.id.movie_genres_details)).setText(builder.toString());
-
-        rvCast = findViewById(R.id.actors_list);
-        rvCast.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false));
-        getCreditsCall(ApiRetrofit.getApiRetrofit(), movie.getId());
-
-        rvPictures = findViewById(R.id.pictures_list);
-        rvPictures.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false));
-        getPicturesCall(ApiRetrofit.getApiRetrofit(), movie.getId());
+        ((TextView) findViewById(R.id.movie_genres_details)).setText(genres);
     }
 
     private void getPicturesCall(MoviesApi moviesApi, Integer id) {
