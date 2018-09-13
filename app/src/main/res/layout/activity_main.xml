@@ -2,46 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    style="@style/activity"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+    <RelativeLayout style="@style/wh_match_wrap">
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            style="@style/wh_match_wrap.medium_headline"
             android:layout_toLeftOf="@+id/change_filters"
             android:layout_toStartOf="@+id/change_filters"
-            android:text="@string/list_of_movies"
-            android:textSize="20sp" />
+            android:text="@string/list_of_movies" />
 
         <Button
             android:id="@+id/change_filters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wh_wrap.small_button"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:background="@color/blue_button"
-            android:padding="10dp"
             android:text="@string/change_filters_button" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/blue_view" />
+    <View style="@style/line.thin.blue" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/movies_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp" />
+        style="@style/recycler_view" />
 </LinearLayout>

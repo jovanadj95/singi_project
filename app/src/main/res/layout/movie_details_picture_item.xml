@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="5dp">
+    style="@style/wh_wrap.recycler_view_item_layout"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/picture_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wh_wrap"
         android:src="@drawable/deadpool2" />
 </LinearLayout>

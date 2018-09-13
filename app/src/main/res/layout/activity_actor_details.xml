@@ -1,87 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    style="@style/activity"
     tools:context=".activity.ActorDetailsActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/wh_match_wrap"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/details_actor_picture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
+            style="@style/wh_wrap.gravity_center" />
 
         <TextView
             android:id="@+id/details_actor_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textSize="22sp" />
+            style="@style/wh_match_wrap.large_headline" />
 
         <TextView
             android:id="@+id/details_actor_birthday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp" />
+            style="@style/wh_match_wrap"
+            android:layout_marginTop="@dimen/separation" />
 
         <TextView
             android:id="@+id/details_actor_death"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/wh_match_wrap"
             android:visibility="gone" />
 
         <TextView
             android:id="@+id/details_actor_place_of_birth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="@style/wh_match_wrap" />
 
         <TextView
             android:id="@+id/details_actor_gender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="@style/wh_match_wrap" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/biography"
-            android:textSize="18sp" />
+            style="@style/wh_match_wrap.small_headline"
+            android:text="@string/biography" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/blue_view" />
+        <View style="@style/line.thin.blue" />
 
         <TextView
             android:id="@+id/details_actor_biography"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="@style/wh_match_wrap" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/filmography"
-            android:textSize="18sp" />
+            style="@style/wh_match_wrap.small_headline"
+            android:text="@string/filmography" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/blue_view" />
+        <View style="@style/line.thin.blue" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/details_actor_filmography"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="@style/recycler_view" />
     </LinearLayout>
 </ScrollView>

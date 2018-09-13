@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    style="@style/wh_wrap.recycler_view_item_layout"
     android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/filmography_poster"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        style="@style/wh_wrap" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        style="@style/wh_wrap"
+        android:layout_marginLeft="@dimen/separation_left_margin"
+        android:layout_marginRight="@dimen/separation_left_margin"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/filmography_character"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="@style/wh_match_wrap" />
 
         <TextView
             android:id="@+id/filmography_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="@style/wh_match_wrap" />
 
         <TextView
             android:id="@+id/filmography_year"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="@style/wh_match_wrap" />
     </LinearLayout>
 
 </LinearLayout>

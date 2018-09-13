@@ -2,79 +2,53 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    style="@style/activity"
     tools:context=".activity.FiltersActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/wh_match_wrap"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+        <RelativeLayout style="@style/wh_match_wrap">
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
+                style="@style/wh_match_wrap.medium_headline"
                 android:layout_toLeftOf="@+id/clear_filters"
                 android:layout_toStartOf="@+id/clear_filters"
-                android:text="@string/change_filters"
-                android:textSize="18sp" />
+                android:text="@string/change_filters" />
 
             <Button
                 android:id="@+id/clear_filters"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/wh_wrap.small_button"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:background="@color/blue_button"
-                android:padding="10dp"
                 android:text="@string/clear_filters" />
         </RelativeLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/blue_view" />
+        <View style="@style/line.thick" />
 
         <com.singidunum.moviesinfoapp.view.ListFilterWidget
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/wh_match_wrap"
             app:title="Genres" />
 
         <com.singidunum.moviesinfoapp.view.DatePickerWidget
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/wh_match_wrap"
             app:title="Date from" />
 
         <com.singidunum.moviesinfoapp.view.DatePickerWidget
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/wh_match_wrap"
             app:title="Date to" />
 
         <com.singidunum.moviesinfoapp.view.RadioButtonWidget
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/wh_match_wrap"
             app:title="Languages" />
 
         <com.singidunum.moviesinfoapp.view.ListFilterWidget
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/wh_match_wrap"
             app:title="Production houses" />
 
         <Button
             android:id="@+id/save_filters"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@color/blue_button"
+            style="@style/wh_match_wrap.large_button"
             android:text="@string/save_filters" />
     </LinearLayout>
-
 </ScrollView>

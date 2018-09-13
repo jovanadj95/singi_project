@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_margin">10dp</dimen>
+
+    <dimen name="thin_line_height">1dp</dimen>
+    <dimen name="thick_line_height">3dp</dimen>
+
+    <dimen name="thin_gray_line_margin_top">3dp</dimen>
+    <dimen name="thin_blue_line_margin_top">5dp</dimen>
+    <dimen name="thick_blue_line_margin_top">5dp</dimen>
+
+    <dimen name="thin_blue_line_margin_bottom">10dp</dimen>
+    <dimen name="thin_filters_line_margin_bottom">5dp</dimen>
+    <dimen name="thick_blue_line_margin_bottom">5dp</dimen>
+
+    <dimen name="recycler_view_margin_top">5dp</dimen>
+    <dimen name="recycler_view_item_padding">5dp</dimen>
+
+    <dimen name="button_padding">10dp</dimen>
+
+    <dimen name="separation_left_margin">5dp</dimen>
+    <dimen name="separation">10dp</dimen>
+
+    <dimen name="picture_width">100dp</dimen>
+    <dimen name="actor_item_height">150dp</dimen>
+    <dimen name="movie_item_height">154dp</dimen>
+    <dimen name="movie_item_horizontal_separation">3dp</dimen>
+
+    <dimen name="headline_extra_large_text_size">24sp</dimen>
+    <dimen name="headline_large_text_size">22sp</dimen>
+    <dimen name="headline_medium_text_size">20sp</dimen>
+    <dimen name="headline_small_text_size">18sp</dimen>
+    <dimen name="headline_extra_small_text_size">16sp</dimen>
+
+</resources>

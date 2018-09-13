@@ -1,79 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/movies"
-    android:layout_width="wrap_content"
-    android:layout_height="154dp"
-    android:orientation="horizontal"
-    android:padding="10dp">
+    style="@style/wh_wrap.recycler_view_item_layout"
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/poster"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/picture_width"
+        android:layout_height="@dimen/movie_item_height"
         android:src="@drawable/deadpool2" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
+        style="@style/wh_wrap"
+        android:layout_marginLeft="@dimen/separation_left_margin"
+        android:layout_marginStart="@dimen/separation_left_margin"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/movie_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wh_wrap"
             android:text="@string/deadpool_2"
-            android:textSize="16sp" />
+            android:textSize="@dimen/headline_extra_small_text_size" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="3dp"
-            android:background="@android:color/darker_gray" />
+        <View style="@style/line.thin.gray" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
+            style="@style/wh_match_wrap"
+            android:layout_marginTop="@dimen/movie_item_horizontal_separation"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/wh_wrap.gravity_center"
                 android:text="@string/rating_text" />
 
             <TextView
                 android:id="@+id/rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp" />
+                style="@style/wh_wrap.gravity_center"
+                android:layout_marginLeft="@dimen/separation_left_margin"
+                android:layout_marginStart="@dimen/separation_left_margin" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
+                style="@style/wh_wrap.gravity_center"
+                android:layout_marginLeft="@dimen/separation_left_margin"
+                android:layout_marginStart="@dimen/separation_left_margin"
                 android:src="@android:drawable/star_off" />
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="3dp"
-            android:background="@android:color/darker_gray" />
+        <View style="@style/line.thin.gray" />
 
         <TextView
             android:id="@+id/overview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
+            style="@style/wh_wrap"
+            android:layout_marginTop="@dimen/movie_item_horizontal_separation"
             android:ellipsize="end"
-            android:maxLines="3"
+            android:maxLines="4"
             android:text="@string/deadpool_plot" />
     </LinearLayout>
 </LinearLayout>

@@ -1,168 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    style="@style/activity"
     tools:context=".activity.MovieDetailsActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/wh_match_wrap"
         android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            style="@style/wh_match_wrap"
+            android:layout_marginBottom="@dimen/separation">
 
             <TextView
                 android:id="@+id/movie_title_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/wh_wrap"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_toLeftOf="@+id/imdb_vote_average"
                 android:layout_toStartOf="@+id/imdb_vote_average"
                 android:text="@string/deadpool_2"
-                android:textSize="24sp" />
+                android:textSize="@dimen/headline_extra_large_text_size" />
 
             <TextView
                 android:id="@+id/imdb_vote_average"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
+                style="@style/wh_wrap"
+                android:layout_marginLeft="@dimen/separation_left_margin"
+                android:layout_marginStart="@dimen/separation_left_margin"
                 android:layout_toLeftOf="@+id/star"
                 android:layout_toStartOf="@+id/star"
-                android:textSize="24sp" />
+                android:textSize="@dimen/headline_extra_large_text_size" />
 
             <ImageView
                 android:id="@+id/star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/wh_wrap"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
+                android:layout_marginLeft="@dimen/separation_left_margin"
+                android:layout_marginStart="@dimen/separation_left_margin"
                 android:src="@android:drawable/star_off" />
         </RelativeLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/blue_view" />
+        <View style="@style/line.thick" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/movie_details"
-            android:textSize="18sp" />
+            style="@style/wh_match_wrap.small_headline"
+            android:text="@string/movie_details" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/blue_view" />
+        <View style="@style/line.thin.blue" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/wh_match_wrap"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/wh_wrap"
                 android:text="@string/genres" />
 
             <TextView
                 android:id="@+id/movie_genres_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
+                style="@style/wh_wrap"
+                android:layout_marginLeft="@dimen/separation_left_margin"
+                android:layout_marginStart="@dimen/separation_left_margin"
                 android:text="@string/genre" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/wh_match_wrap"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/wh_wrap"
                 android:text="@string/release_date" />
 
             <TextView
                 android:id="@+id/movie_release_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
+                style="@style/wh_wrap"
+                android:layout_marginLeft="@dimen/separation_left_margin"
+                android:layout_marginStart="@dimen/separation_left_margin"
                 android:text="@string/_06_09_2018" />
         </LinearLayout>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/overview"
-            android:textSize="18sp" />
+            style="@style/wh_match_wrap.small_headline"
+            android:text="@string/overview" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/blue_view" />
+        <View style="@style/line.thin.blue" />
 
         <TextView
             android:id="@+id/movie_plot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/wh_match_wrap"
             android:text="@string/deadpool_plot" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/movie_pictures"
-            android:textSize="18sp" />
+            style="@style/wh_match_wrap.small_headline"
+            android:text="@string/movie_pictures" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/blue_view" />
+        <View style="@style/line.thin.blue" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/pictures_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp" />
+            style="@style/recycler_view" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/actors"
-            android:textSize="18sp" />
+            style="@style/wh_match_wrap.small_headline"
+            android:text="@string/actors" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/blue_view" />
+        <View style="@style/line.thin.blue" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/actors_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp" />
+            style="@style/recycler_view" />
     </LinearLayout>
 </ScrollView>

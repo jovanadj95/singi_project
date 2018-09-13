@@ -1,12 +1,98 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:colorBackground">@android:color/background_dark</item>
         <item name="android:colorForeground">@android:color/darker_gray</item>
         <item name="android:textColor">@android:color/darker_gray</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@android:color/darker_gray</item>
+    </style>
+
+    <style name="wh_match_wrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="wh_wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="activity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">@dimen/layout_margin</item>
+    </style>
+
+    <style name="line">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="line.thin">
+        <item name="android:layout_height">@dimen/thin_line_height</item>
+    </style>
+
+    <style name="line.thick">
+        <item name="android:layout_marginTop">@dimen/thick_blue_line_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/thick_blue_line_margin_bottom</item>
+        <item name="android:layout_height">@dimen/thick_line_height</item>
+        <item name="android:background">@color/blue_view</item>
+    </style>
+
+    <style name="line.thin.gray">
+        <item name="android:layout_marginTop">@dimen/thin_gray_line_margin_top</item>
+        <item name="android:background">@android:color/darker_gray</item>
+    </style>
+
+    <style name="line.thin.blue">
+        <item name="android:layout_marginTop">@dimen/thin_blue_line_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/thin_blue_line_margin_bottom</item>
+        <item name="android:background">@color/blue_view</item>
+    </style>
+
+    <style name="line.thin.filters">
+        <item name="android:layout_marginBottom">@dimen/thin_filters_line_margin_bottom</item>
+        <item name="android:background">@color/blue_view</item>
+    </style>
+
+    <style name="recycler_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/recycler_view_margin_top</item>
+    </style>
+
+    <style name="wh_wrap.small_button">
+        <item name="android:background">@color/blue_button</item>
+        <item name="android:padding">@dimen/button_padding</item>
+    </style>
+
+    <style name="wh_match_wrap.large_button">
+        <item name="android:background">@color/blue_button</item>
+        <item name="android:layout_marginTop">@dimen/separation</item>
+    </style>
+
+    <style name="wh_match_wrap.small_headline">
+        <item name="android:textSize">@dimen/headline_small_text_size</item>
+        <item name="android:layout_marginTop">@dimen/separation</item>
+    </style>
+
+    <style name="wh_match_wrap.large_headline">
+        <item name="android:textSize">@dimen/headline_large_text_size</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="wh_match_wrap.medium_headline">
+        <item name="android:textSize">@dimen/headline_medium_text_size</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="wh_wrap.recycler_view_item_layout">
+        <item name="android:padding">@dimen/recycler_view_item_padding</item>
+    </style>
+
+    <style name="wh_wrap.gravity_center">
+        <item name="android:layout_gravity">center</item>
     </style>
 
 </resources>
