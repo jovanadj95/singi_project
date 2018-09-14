@@ -16,7 +16,7 @@ import com.singidunum.moviesinfoapp.R;
 import com.singidunum.moviesinfoapp.activity.MovieDetailsActivity;
 import com.singidunum.moviesinfoapp.model.api.actors.Cast;
 import com.singidunum.moviesinfoapp.model.api.movie.Movie;
-import com.singidunum.moviesinfoapp.service.ApiRetrofit;
+import com.singidunum.moviesinfoapp.service.RetrofitClient;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -66,7 +66,7 @@ public class FilmographyAdapter extends RecyclerView.Adapter<FilmographyAdapter.
 
     private void getMovieDetails(Integer id) {
         if (id != null) {
-            ApiRetrofit.getApiRetrofit().getMovie(id, BuildConfig.API_KEY, "en-US").enqueue(new Callback<Movie>() {
+            RetrofitClient.getClient().getMovie(id, BuildConfig.API_KEY, "en-US").enqueue(new Callback<Movie>() {
                 @Override
                 public void onResponse(Call<Movie> call, Response<Movie> response) {
                     Intent intent = new Intent(context, MovieDetailsActivity.class);

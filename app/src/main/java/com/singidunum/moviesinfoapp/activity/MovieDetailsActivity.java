@@ -19,7 +19,7 @@ import com.singidunum.moviesinfoapp.model.api.credits.MovieCreditsResult;
 import com.singidunum.moviesinfoapp.model.api.movie.Movie;
 import com.singidunum.moviesinfoapp.model.api.movies.Movies;
 import com.singidunum.moviesinfoapp.model.api.pictures.MoviePicturesResult;
-import com.singidunum.moviesinfoapp.service.ApiRetrofit;
+import com.singidunum.moviesinfoapp.service.RetrofitClient;
 import com.singidunum.moviesinfoapp.service.FilterLists;
 
 import retrofit2.Call;
@@ -86,11 +86,11 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
                 rvCast = findViewById(R.id.actors_list);
                 rvCast.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false));
-                getCreditsCall(ApiRetrofit.getApiRetrofit(), movieId);
+                getCreditsCall(RetrofitClient.getClient(), movieId);
 
                 rvPictures = findViewById(R.id.pictures_list);
                 rvPictures.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false));
-                getPicturesCall(ApiRetrofit.getApiRetrofit(), movieId);
+                getPicturesCall(RetrofitClient.getClient(), movieId);
             }
         }
     }

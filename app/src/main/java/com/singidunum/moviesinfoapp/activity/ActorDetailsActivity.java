@@ -15,7 +15,7 @@ import com.singidunum.moviesinfoapp.adapter.FilmographyAdapter;
 import com.singidunum.moviesinfoapp.model.api.actors.Actor;
 import com.singidunum.moviesinfoapp.model.api.actors.ActorFilmography;
 import com.singidunum.moviesinfoapp.model.api.actors.Cast;
-import com.singidunum.moviesinfoapp.service.ApiRetrofit;
+import com.singidunum.moviesinfoapp.service.RetrofitClient;
 import com.squareup.picasso.Picasso;
 
 import java.util.Collections;
@@ -44,7 +44,7 @@ public class ActorDetailsActivity extends AppCompatActivity {
     }
 
     private void getActors(int actorId, String apiKey) {
-        ApiRetrofit.getApiRetrofit().getActor(actorId, apiKey).enqueue(new Callback<Actor>() {
+        RetrofitClient.getClient().getActor(actorId, apiKey).enqueue(new Callback<Actor>() {
             @Override
             public void onResponse(Call<Actor> call, Response<Actor> response) {
                 if (response.body() != null) {
@@ -93,7 +93,7 @@ public class ActorDetailsActivity extends AppCompatActivity {
     }
 
     private void getFilmography(int actorId, String apiKey) {
-        ApiRetrofit.getApiRetrofit().getActorFilmography(actorId, apiKey, "en-US").enqueue(new Callback<ActorFilmography>() {
+        RetrofitClient.getClient().getActorFilmography(actorId, apiKey, "en-US").enqueue(new Callback<ActorFilmography>() {
             @Override
             public void onResponse(Call<ActorFilmography> call, Response<ActorFilmography> response) {
                 if (response.body() != null) {

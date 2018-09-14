@@ -15,7 +15,7 @@ import com.singidunum.moviesinfoapp.adapter.MoviesAdapter;
 import com.singidunum.moviesinfoapp.model.api.movies.Movies;
 import com.singidunum.moviesinfoapp.model.api.movies.MovieResult;
 import com.singidunum.moviesinfoapp.model.filter.FilterObject;
-import com.singidunum.moviesinfoapp.service.ApiRetrofit;
+import com.singidunum.moviesinfoapp.service.RetrofitClient;
 import com.singidunum.moviesinfoapp.service.SharedStorageData;
 
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Nav
     }
 
     private void createRetrofitGetMoviesCall(int page) {
-        Call<MovieResult> call = ApiRetrofit.getApiRetrofit().getMovies(BuildConfig.API_KEY, "en-US",
+        Call<MovieResult> call = RetrofitClient.getClient().getMovies(BuildConfig.API_KEY, "en-US",
                 "popularity.desc", false, page, SharedStorageData.getDateFrom(this),
                 SharedStorageData.getDateTo(this), getId("Production houses"), getId("Genres"), getLanguage());
         getMovies(call);
