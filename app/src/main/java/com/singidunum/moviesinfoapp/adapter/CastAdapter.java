@@ -36,10 +36,12 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.CastViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CastViewHolder holder, int position) {
+        holder.setIsRecyclable(false);
         final Cast cast = castList.get(position);
-        if (cast.getProfilePath() != null) {
+        if (cast != null) {
             Picasso.get()
                     .load(BuildConfig.API_IMG_BASE + "w185" + cast.getProfilePath())
+                    .error(R.drawable.no_image_available)
                     .into(holder.actorPicture);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -50,11 +52,9 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.CastViewHolder
                     context.startActivity(intent);
                 }
             });
-        } else {
-            holder.actorPicture.setImageResource(R.drawable.no_image_available);
+            holder.actorName.setText(cast.getName());
+            holder.character.setText(cast.getCharacter());
         }
-        holder.actorName.setText(cast.getName());
-        holder.character.setText(cast.getCharacter());
     }
 
     @Override

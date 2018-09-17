@@ -5,7 +5,7 @@
     <string name="deadpool_plot">Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boy\'s life.</string>
     <string name="deadpool_actors">Josh Brolin, Ryan Reynolds, Morena Baccarin, Zazie Beetz</string>
     <string name="deadpool_2">Deadpool 2</string>
-    <string name="genre">Action, Adventure</string>
+    <string name="genre">Genres: Action, Adventure</string>
     <string name="change_filters">Change filters:</string>
     <string name="save_filters">Save filters</string>
     <string name="date_from">Date from:</string>
@@ -22,11 +22,10 @@
     <string name="search">Search</string>
     <string name="clear_filters">Clear filters</string>
     <string name="overview">Overview</string>
-    <string name="genres">Genres:</string>
-    <string name="release_date">Release date:</string>
-    <string name="_06_09_2018">06.09.2018.</string>
+    <string name="_06_09_2018">Release date: 06.09.2018.</string>
     <string name="movie_details">Movie Details</string>
     <string name="_2018">(2018)</string>
     <string name="biography">Biography</string>
     <string name="filmography">Filmography</string>
+    <string name="no_biography_error_message">Biography is not available at the moment.</string>
 </resources>

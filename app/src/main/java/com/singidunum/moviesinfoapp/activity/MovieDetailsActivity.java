@@ -19,8 +19,8 @@ import com.singidunum.moviesinfoapp.model.api.credits.MovieCreditsResult;
 import com.singidunum.moviesinfoapp.model.api.movie.Movie;
 import com.singidunum.moviesinfoapp.model.api.movies.Movies;
 import com.singidunum.moviesinfoapp.model.api.pictures.MoviePicturesResult;
-import com.singidunum.moviesinfoapp.service.RetrofitClient;
 import com.singidunum.moviesinfoapp.service.FilterLists;
+import com.singidunum.moviesinfoapp.service.RetrofitClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -100,13 +100,14 @@ public class MovieDetailsActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.imdb_vote_average)).setText(voteAverage);
         ((TextView) findViewById(R.id.movie_plot)).setText(overview);
         ((TextView) findViewById(R.id.movie_release_details)).setText(new StringBuilder()
+                .append("Release date: ")
                 .append(date.substring(date.lastIndexOf("-") + 1))
                 .append(".")
                 .append(date.substring(date.indexOf("-") + 1, date.lastIndexOf("-")))
                 .append(".")
                 .append(date.substring(0, date.indexOf("-")))
                 .append(".").toString());
-        ((TextView) findViewById(R.id.movie_genres_details)).setText(genres);
+        ((TextView) findViewById(R.id.movie_genres_details)).setText("Genres: " + genres);
     }
 
     private void getPicturesCall(MoviesApi moviesApi, Integer id) {

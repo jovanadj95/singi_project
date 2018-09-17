@@ -14,12 +14,14 @@
 
         <TextView
             android:id="@+id/details_actor_name"
-            style="@style/wh_match_wrap.large_headline" />
+            style="@style/wh_match_wrap.large_headline"
+            android:layout_marginBottom="@dimen/separation"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/details_actor_birthday"
             style="@style/wh_match_wrap"
-            android:layout_marginTop="@dimen/separation" />
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/details_actor_death"
@@ -28,11 +30,13 @@
 
         <TextView
             android:id="@+id/details_actor_place_of_birth"
-            style="@style/wh_match_wrap" />
+            style="@style/wh_match_wrap"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/details_actor_gender"
-            style="@style/wh_match_wrap" />
+            style="@style/wh_match_wrap"
+            android:visibility="gone" />
 
         <TextView
             style="@style/wh_match_wrap.small_headline"

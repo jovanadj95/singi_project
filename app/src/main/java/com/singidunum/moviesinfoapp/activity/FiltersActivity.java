@@ -36,7 +36,7 @@ public class FiltersActivity extends AppCompatActivity {
         findViewById(R.id.clear_filters).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearFilters((ViewGroup) findViewById(R.id.clear_filters).getParent().getParent());
+                clearFilters((ViewGroup) findViewById(R.id.save_filters).getParent().getParent());
             }
         });
     }

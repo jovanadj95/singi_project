@@ -52,23 +52,43 @@ public class ActorDetailsActivity extends AppCompatActivity {
                     if (actor != null) {
                         Picasso.get()
                                 .load(BuildConfig.API_IMG_BASE + "h632" + actor.getProfilePath())
+                                .error(R.drawable.no_image_available)
                                 .into((ImageView) findViewById(R.id.details_actor_picture));
-
-                        ((TextView) findViewById(R.id.details_actor_name)).setText(actor.getName());
-                        ((TextView) findViewById(R.id.details_actor_place_of_birth)).setText(new StringBuilder().append("Place of birth: ").append(actor.getPlaceOfBirth()).toString());
-                        ((TextView) findViewById(R.id.details_actor_gender)).setText(new StringBuilder().append("Gender: ").append(actor.getGender() == 1 ? "Female" : "Male").toString());
-                        ((TextView) findViewById(R.id.details_actor_biography)).setText(actor.getBiography());
+                        if (actor.getName() != null) {
+                            TextView vName = findViewById(R.id.details_actor_name);
+                            vName.setVisibility(View.VISIBLE);
+                            vName.setText(actor.getName());
+                        }
+                        if (actor.getPlaceOfBirth() != null) {
+                            TextView vPlaceOfBirth = findViewById(R.id.details_actor_place_of_birth);
+                            vPlaceOfBirth.setVisibility(View.VISIBLE);
+                            vPlaceOfBirth.setText(new StringBuilder().append("Place of birth: ").append(actor.getPlaceOfBirth()).toString());
+                        }
+                        if (actor.getGender() != null) {
+                            TextView vGender = findViewById(R.id.details_actor_gender);
+                            vGender.setVisibility(View.VISIBLE);
+                            vGender.setText(new StringBuilder().append("Gender: ").append(actor.getGender() == 1 ? "Female" : "Male").toString());
+                        }
+                        if (actor.getBiography() == null || actor.getBiography().isEmpty()) {
+                            ((TextView) findViewById(R.id.details_actor_biography)).setText(R.string.no_biography_error_message);
+                        } else {
+                            ((TextView) findViewById(R.id.details_actor_biography)).setText(actor.getBiography());
+                        }
 
                         String date = actor.getBirthday();
-                        ((TextView) findViewById(R.id.details_actor_birthday)).setText(new StringBuilder()
-                                .append("Birthday: ")
-                                .append(date.substring(date.lastIndexOf("-") + 1))
-                                .append(".")
-                                .append(date.substring(date.indexOf("-") + 1, date.lastIndexOf("-")))
-                                .append(".")
-                                .append(date.substring(0, date.indexOf("-")))
-                                .append(".").toString());
+                        if (date != null) {
+                            TextView vBirthday = findViewById(R.id.details_actor_birthday);
+                            vBirthday.setVisibility(View.VISIBLE);
+                            ((TextView) findViewById(R.id.details_actor_birthday)).setText(new StringBuilder()
+                                    .append("Birthday: ")
+                                    .append(date.substring(date.lastIndexOf("-") + 1))
+                                    .append(".")
+                                    .append(date.substring(date.indexOf("-") + 1, date.lastIndexOf("-")))
+                                    .append(".")
+                                    .append(date.substring(0, date.indexOf("-")))
+                                    .append(".").toString());
 
+                        }
                         if (actor.getDeathday() != null) {
                             TextView vDeathday = findViewById(R.id.details_actor_death);
                             vDeathday.setVisibility(View.VISIBLE);
